@@ -1,0 +1,70 @@
+/* line 1, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+body {
+  width: 98%;
+  margin: auto; }
+
+/* line 5, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+#containerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+/* line 11, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.divNav:nth-child(1) {
+  display: flex;
+  flex-basis: 50%; }
+
+/* line 16, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+li {
+  list-style: none;
+  display: inline-block; }
+
+/* line 21, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.containerArticle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 2%;
+  border: 1px solid black; }
+
+/* line 29, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.elementContainerArticle {
+  display: flex; }
+
+/* line 32, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.elementContainerArticle:nth-child(1) {
+  flex-basis: 30%; }
+
+/* line 35, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.elementContainerArticle:nth-child(1) img {
+  width: 100%; }
+
+/* line 38, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.elementContainerArticle:nth-child(2) {
+  flex-basis: 70%; }
+
+/* line 42, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.contentDescriptionArticle {
+  padding: 2%;
+  text-align: justify; }
+
+/* line 47, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+h2 {
+  text-align: center; }
+
+/* line 51, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+h1 {
+  text-align: center; }
+
+/* line 55, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.lienPageCustomArticle {
+  margin-top: 10%;
+  padding-left: 10%; }
+
+/* line 59, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.lienPageCustomArticle a {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bolder; }
+
+/*# sourceMappingURL=styles.css.map */
