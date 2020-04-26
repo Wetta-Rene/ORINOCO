@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
+        <script src="js/scripts.js"></script>
+        <title>ORINOCO - Accueil</title>
+    </head>
+
+<body>
+<header>
+    <button id="bouton1">Voir les nounours</button>
+    <button id="bouton2">Voir les tables en chêne</button>
+    <button id="bouton3">Voir les caméras</button>
+</header>
+    
+<script type="text/javascript">
+var Resultats = document.getElementById("resultats");
+function getParam(param) {
+       var varsp = {};
+   window.location.href.replace(/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+             function( m, key, value ) { // callback
+                     varsp[key] = value !== undefined ? value :  ;
+              }
+       );
+
+      if ( param ) {
+         return varsp[param] ? varsp[param] : null;
+       }
+      return varsp ;
+}
+var strp1 = getParam(‘catalogue′);
+var strp2 = getParam(‘produit′);
+Resultats.innerHTML = strp1;
+    
+</script>
+    
+<section id="resultats">
+
+</section>
+</body>
+<footer>
+</footer>
+</html>

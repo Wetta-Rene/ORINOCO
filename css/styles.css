@@ -67,4 +67,9 @@ h1 {
   cursor: pointer;
   font-weight: bolder; }
 
+/* line 65, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+header {
+  margin-top: 2%;
+  margin-bottom: 2%; }
+
 /*# sourceMappingURL=styles.css.map */
