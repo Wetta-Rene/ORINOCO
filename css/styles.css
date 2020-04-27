@@ -58,7 +58,7 @@ h1 {
 
 /* line 55, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .lienPageCustomArticle {
-  margin-top: 10%;
+  margin-top: 2%;
   padding-left: 10%; }
 
 /* line 59, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
@@ -71,5 +71,20 @@ h1 {
 header {
   margin-top: 2%;
   margin-bottom: 2%; }
+
+/* line 70, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+#selectOptionProduit {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 2%; }
+
+/* line 76, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.boutonSubmit {
+  margin-left: 2%; }
+
+/* line 80, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.divPrix {
+  margin-top: 2%;
+  text-align: right; }
 
 /*# sourceMappingURL=styles.css.map */

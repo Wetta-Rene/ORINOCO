@@ -10,22 +10,23 @@
 
 <body>
 <header>
-    <button id="bouton1">Voir les nounours</button>
-    <button id="bouton2">Voir les tables en chêne</button>
-    <button id="bouton3">Voir les caméras</button>
+
+
+    <div id="href"></div>
 </header>
     
 <script type="text/javascript">
-const queryString = window.location.search;
-console.log(queryString);
-const urlParams = new URLSearchParams(queryString);
-const catalogue = urlParams.get('catalogue')
-console.log("catalogue="+catalogue);
-const produit = urlParams.get('produit')
-console.log("produit ="+produit); 
+const queryString = window.location.search; //recupere l'url
+const urlParams = new URLSearchParams(queryString); //recupere apres le ? de l'url
+const catalogue = urlParams.get('catalogue') //recupere catalogue
+const produit = urlParams.get('produit') // recupere produit
 
+    //création du lien retour de la page
+    var link = '<a href="index.html?catalogue='+catalogue+'> << Retour page du catalogue</a>';
+    console.log(link);
    
-    /*recherche de l'article dabs la base JSON */
+   
+    /*recherche de l'article dans la base JSON */
     var xhttp;
     if (catalogue == "") {
         document.getElementById("resultats").innerHTML = "Pas de données, merci de revenir à la page précédente !!";
@@ -37,23 +38,30 @@ console.log("produit ="+produit);
                 for (var i = 0; i < response.length; i++) {
                     if (response[i]._id === produit) {
                        var objet = response[i];
-      var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="lienPageCustomArticle"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'"> >> Personnalisé ce produit</a></div></div></div></article>';
                         
+                        for (var j = 0; j < objet.colors.length; j++){
+                            var choix = '<option value="'+objet.colors.j+'">'+objet.colors.j+'</option>';
+                        }
+                        
+                        
+                        
+      var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div id="selectOptionProduit"><form methode="GET"><select name="option" id="select"></select><input type="submit" value="Mettre dans le panier" class="boutonSubmit"/></form></div></div></div></div></article>';
+                     
                     }
                 }
 
             
-            
-            
+            var affichageChoixArticle = document.getElementById("select"); 
             var affichageArticleUnique = document.getElementById("articleSeul");
-
-
+            var affichageLink = document.getElementById("href");
                 
                 
               
 
                 /*affichage des differents article*/
-                affichageArticleUnique.innerHTML = article;      
+                affichageArticleUnique.innerHTML = article;  
+                affichageChoixArticle.innerHTML += choix;
+                affichageLink.innerHTML = link;
 
             }
             
@@ -62,6 +70,7 @@ console.log("produit ="+produit);
     xhttp.send();
 
 </script>
+
 <section id="articleSeul">
 
 </section>

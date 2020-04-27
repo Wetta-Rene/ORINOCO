@@ -31,7 +31,7 @@ function showCustomer(catalogue) {
                 var objet = response[i];
                 
 
-                var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="lienPageCustomArticle"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'"> >> Personnalisé ce produit</a></div></div></div></article>';
+                var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div class="lienPageCustomArticle"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'"> >> Personnalisé ce produit</a></div></div></div></article>';
 
                 // affichage des differents article
                 Resultats.innerHTML += article;      
@@ -43,6 +43,8 @@ function showCustomer(catalogue) {
     xhttp.open("GET", "http://localhost:3000/api/" + catalogue, true);
     xhttp.send();
 }
+    
+    
 </script>
 <header>
     <button id="bouton1" onclick="showCustomer('teddies');">Voir les nounours</button>
