@@ -22,7 +22,7 @@ const catalogue = urlParams.get('catalogue') //recupere catalogue
 const produit = urlParams.get('produit') // recupere produit
 
     //création du lien retour de la page
-    var link = '<a href="index.html?catalogue='+catalogue+'> << Retour page du catalogue</a>';
+    var link = '<a href="index.html?catalogue='+catalogue+'"/> << Retour page du catalogue</a>';
     console.log(link);
    
    
@@ -38,14 +38,13 @@ const produit = urlParams.get('produit') // recupere produit
                 for (var i = 0; i < response.length; i++) {
                     if (response[i]._id === produit) {
                        var objet = response[i];
+         
+                for (var j = 0; j < objet.colors.length; j++){
+                    var choix = '<option value="'+objet.colors[j]+'">'+objet.colors[j]+'</option>'
+                }
+                      
                         
-                        for (var j = 0; j < objet.colors.length; j++){
-                            var choix = '<option value="'+objet.colors.j+'">'+objet.colors.j+'</option>';
-                        }
-                        
-                        
-                        
-      var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div id="selectOptionProduit"><form methode="GET"><select name="option" id="select"></select><input type="submit" value="Mettre dans le panier" class="boutonSubmit"/></form></div></div></div></div></article>';
+      var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div id="selectOptionProduit"><form methode="GET"><select name="option" id="select">' + += choix + '</select><input type="submit" value="Mettre dans le panier" class="boutonSubmit"/></form></div></div></div></div></article>';
                      
                     }
                 }

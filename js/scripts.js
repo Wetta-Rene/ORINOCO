@@ -5,5 +5,3 @@ var functionOpenLink = function (a) {
 
 
 
-
-/*requette XML vers le backend pour la page produit.html (index) */
