@@ -16,27 +16,53 @@
 </header>
     
 <script type="text/javascript">
-var Resultats = document.getElementById("resultats");
-function getParam(param) {
-       var varsp = {};
-   window.location.href.replace(/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-             function( m, key, value ) { // callback
-                     varsp[key] = value !== undefined ? value :  ;
-              }
-       );
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const catalogue = urlParams.get('catalogue')
+console.log("catalogue="+catalogue);
+const produit = urlParams.get('produit')
+console.log("produit ="+produit); 
 
-      if ( param ) {
-         return varsp[param] ? varsp[param] : null;
-       }
-      return varsp ;
-}
-var strp1 = getParam(‘catalogue′);
-var strp2 = getParam(‘produit′);
-Resultats.innerHTML = strp1;
-    
+   
+    /*recherche de l'article dabs la base JSON */
+    var xhttp;
+    if (catalogue == "") {
+        document.getElementById("resultats").innerHTML = "Pas de données, merci de revenir à la page précédente !!";
+    }
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+                for (var i = 0; i < response.length; i++) {
+                    if (response[i]._id === produit) {
+                       var objet = response[i];
+      var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="lienPageCustomArticle"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'"> >> Personnalisé ce produit</a></div></div></div></article>';
+                        
+                    }
+                }
+
+            
+            
+            
+            var affichageArticleUnique = document.getElementById("articleSeul");
+
+
+                
+                
+              
+
+                /*affichage des differents article*/
+                affichageArticleUnique.innerHTML = article;      
+
+            }
+            
+        };//fin du if readyState
+    xhttp.open("GET", "http://localhost:3000/api/" + catalogue, true);
+    xhttp.send();
+
 </script>
-    
-<section id="resultats">
+<section id="articleSeul">
 
 </section>
 </body>
