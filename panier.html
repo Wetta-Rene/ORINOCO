@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+const urlComplete = window.location.href; //recupere l'url
+const queryString = window.location.search; 
+const urlParams = new URLSearchParams(queryString); //recupere apres le ? de l'url
+    
+const Id = urlParams.get('id') //recupere catalogue
+const option = urlParams.get('option') // recupere produit
+const quantite = urlParams.get('quantite') // recupere produit
+const catalogue = urlParams.get('catalogue') // recupere produit
+const retourUrl = urlParams.get('urlRetour') // recupere produit
+const name = urlParams.get('name') // recupere nom du produit
+
+var verifChaineUrlNonVide = "";
+    if(Id === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(option === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(quantite === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(catalogue === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(retourUrl === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(name === ""){
+        verifChaineUrlNonVide = "1";
+    }
+if(verifChaineUrlNonVide > 0){
+    window.location.href= retourUrl;
+}
+// ici tout est bon on peut creer un panier et le remplir
+    var products = [Id, name, option, quantite, catalogue]; // mis dans un tableau pour panier
+    console.log("array envoye:" +products);
+    
+    var request = new XMLHttpRequest();
+    url = "http://localhost:3000/api/"+catalogue+"/order";
+    request.open("POST", url);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(products));
+    console.log("adresse envoie:"+url);
+
+    
+
+
+
+</script>
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
+        <script src="js/scripts.js"></script>
+        <title>ORINOCO - Panier</title>
+    </head>
+
+<body>
+
