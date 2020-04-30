@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
+        <script src="js/scripts.js"></script>
+        <title>ORINOCO - Panier</title>
+    </head>
+
+<body>
+<script type="text/javascript">
+    
+//quelque variable utiles
+const urlComplete = window.location.href; //recupere l'url
+const queryString = window.location.search; 
+const urlParams = new URLSearchParams(queryString); //recupere apres le ? de l'url
+const Id = urlParams.get('id') //recupere catalogue
+const option = urlParams.get('option') // recupere produit
+const quantite = urlParams.get('quantite') // recupere produit
+const catalogue = urlParams.get('catalogue') // recupere produit
+const retourUrl = urlParams.get('urlRetour') // recupere produit
+const name = urlParams.get('name') // recupere nom du produit
+
+//detection si tout est bon dans la transmission pas de modif utilisateur...
+var verifChaineUrlNonVide = "";
+    if(Id === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(option === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(quantite === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(catalogue === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(retourUrl === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(name === ""){
+        verifChaineUrlNonVide = "1";
+    }
+if(verifChaineUrlNonVide > 0){
+    window.location.href= retourUrl;
+}
+    console.log("panier :"+localStorage.getItem("panier"));
+//tri du panier
+if(localStorage.getItem("panier") == null){ //si panier d'origine car initialisation à null on ecrit directement dans le panier
+
+    var lignePanier = [Id, name, option, quantite, catalogue]; // mis dans un tableau pour panier
+    localStorage.setItem("panier", JSON.stringify(lignePanier));
+    window.location.href = retourUrl;// on revient à la page du produit
+}else{// c'est pas la première fois
+    console.log("choix en cour :"+Id);
+    var lignePanier = [Id, name, option, quantite, catalogue];
+    var data = JSON.parse(localStorage.getItem("panier"));
+        //on va d'abord voir si id existe deja
+        console.log("contenu storage: "+localStorage.getItem("panier"));
+        console.log("contenu data: "+data);
+
+        let i=0;
+            console.log("contenu data0:"+data[0]);
+            
+    if(data[0] != Id){// pas le meme produit a mettre dans le panier, donc on le met
+        data.push(lignePanier);
+        console.log("data apres push: "+data);
+        localStorage.setItem("panier", JSON.stringify(data)); // on remet tout dans le panier au bon format
+        console.log("panier apres push: "+localStorage.getItem("panier"));
+         window.location.href = retourUrl;// on revient à la page du produit
+    }
+        
+    
+    
+    
+}
+
+    
+var data = JSON.parse(localStorage.getItem("panier"));
+
+                     
+
+    
+
+    
+//window.location.href = retourUrl;// on revient à la page du produit
+
+</script>
+
+
+

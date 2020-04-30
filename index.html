@@ -10,6 +10,11 @@
 
 <body>
 <script>
+  // on verifie si un panier existe, si non on cree le panier
+if (localStorage.getItem("panier") == "null") {
+localStorage.setItem("panier", "null");
+}
+
 /*requette XML vers le backend pour la page index.html */
 function showCustomer(catalogue) {
     /*nettoyage du div en cas de remplissage avant*/
@@ -42,13 +47,16 @@ function showCustomer(catalogue) {
     };
     xhttp.open("GET", "http://localhost:3000/api/" + catalogue, true);
     xhttp.send();
+
 }
-    
+    let dataPanier = localStorage.getItem("panier");
+    console.log("Dans local panier:" +dataPanier);
 </script>
 <header>
     <button id="bouton1" onclick="showCustomer('teddies');">Voir les nounours</button>
     <button id="bouton2" onclick="showCustomer('furniture');">Voir les tables en chêne</button>
     <button id="bouton3" onclick="showCustomer('cameras');">Voir les caméras</button>
+    <button><a href="panier.html">Panier</a></button>
 </header>
 
 <section id="resultats">
