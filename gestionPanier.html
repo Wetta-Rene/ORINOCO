@@ -59,10 +59,11 @@ if(action == "ajout"){
     
     //création d'une class pour creer une ligne plus facilement:
     class ligneDuPanier {
-        constructor(reference, nom, quantite, prixUnitaire, prixAjour, catalogue) {
+        constructor(reference, nom, quantite, option, prixUnitaire, prixAjour, catalogue) {
         this.reference = Id;
         this.nom = nom;
         this.quantite = quantite;
+        this.option = option;
         this.prixUnitaire = prixUnitaire;
         this.prixAjour = prixAjour;
         this.catalogue = catalogue;
@@ -73,7 +74,7 @@ if(action == "ajout"){
         console.log("panier: "+localStorage.getItem("panier"));
         //tri du panier
         if(localStorage.getItem("panier") === "vide"){ //si panier d'origine car initialisation à null on ecrit directement dans le panier
-            const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue);
+            const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue);
             var Panier = [];
             Panier.push(ligne); // mis dans un tableau pour panier
             localStorage.setItem("panier", JSON.stringify(Panier));
@@ -81,7 +82,6 @@ if(action == "ajout"){
         }else{ // c'est pas la première fois
             // const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue); // nouveau produit a mettre dans panier
             var data = JSON.parse(localStorage.getItem("panier"));
-            console.log(data.length);
                     
             var produitTrouve = false;
             for(let x in data) {
@@ -95,7 +95,7 @@ if(action == "ajout"){
             }
             
             if (!produitTrouve) {
-                const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue);
+                const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue);
                 data.push(ligne);
             }
 

@@ -82,4 +82,18 @@ header {
     text-align: right;
 }
 //gestion du panier
-
+.ContenairePanier{
+    width: 98%;
+    margin: auto;
+}
+.contenaireLignePanier{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.element-lignePanier{
+    flex-basis: 20%;
+}
+.element-lignePanier:nth-child(1) img{
+    width: 100%;
+}

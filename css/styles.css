@@ -87,4 +87,23 @@ header {
   margin-top: 2%;
   text-align: right; }
 
+/* line 85, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.ContenairePanier {
+  width: 98%;
+  margin: auto; }
+
+/* line 89, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.contenaireLignePanier {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+
+/* line 94, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.element-lignePanier {
+  flex-basis: 20%; }
+
+/* line 97, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.element-lignePanier:nth-child(1) img {
+  width: 100%; }
+
 /*# sourceMappingURL=styles.css.map */

@@ -10,20 +10,40 @@
 
 <body>
 <script>
-        var produitsLocal = JSON.parse(localStorage.getItem("panier"));
+        var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+
+            for(let x in produitsLocal) { // on balaye le contenu du panier
+                var ligneProduitLocal = produitsLocal[x];  //>> recherche  ligneProduitLocal.nom
+                //requette XML vers le backend pour recuperer image et description
+                 let xhttp;
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            let produitServeur = JSON.parse(this.responseText);
+                                    var prixAjour = ligneProduitLocal.quantite * produitServeur.price;
+                                    
+
+                            
+                            let ligne = '<article id="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+produitServeur.imageUrl+'" ></div><div class="element-lignePanier">'+produitServeur.name+'<br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+produitServeur.description+'</div><div class="element-lignePanier">'+produitServeur.price+'</div><div class="element-lignePanier">'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">'+prixAjour+'</div><div class="element-lignePanier">+<br />-</div></div></article>';  
+                                    
+                            //affichage du panier
+                             document.getElementById("resultats").innerHTML += ligne;                           
+                            
+                            
+                            
+                        }//fin du if readyState
+                    };
+                    xhttp.open("GET", "http://localhost:3000/api/"+ligneProduitLocal.catalogue+"/"+ligneProduitLocal.reference, true);
+                    xhttp.send();
+  
+            }// fin for produilocal
+            
+
+    
+    
+    
     
 
-//requette XML vers le backend
-    let xhttp;
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(this.responseText);
-             // on boucle la premiere propriete /
-        }//fin du if readyState
-    };
-    xhttp.open("GET", "http://localhost:3000/api/"+catalogue+"/"+idProduit, true);
-    xhttp.send();
 
 
     
@@ -38,6 +58,13 @@
 
 <section id="resultats">
 
+    
+    
+    
+    
+    
+    
+    
 </section>
 </body>
 <footer>
