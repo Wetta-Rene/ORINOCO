@@ -14,15 +14,20 @@
 const urlComplete = window.location.href; //recupere l'url
 const queryString = window.location.search; 
 const urlParams = new URLSearchParams(queryString); //recupere apres le ? de l'url
+const action = urlParams.get('actionPanier') //recupere catalogue
 const Id = urlParams.get('id') //recupere catalogue
 const option = urlParams.get('option') // recupere produit
 const quantite = urlParams.get('quantite') // recupere produit
 const catalogue = urlParams.get('catalogue') // recupere produit
 const retourUrl = urlParams.get('urlRetour') // recupere produit
 const name = urlParams.get('name') // recupere nom du produit
+const prixUnitaire = urlParams.get('prix') // recupere nom du produit
 
 //detection si tout est bon dans la transmission pas de modif utilisateur...
 var verifChaineUrlNonVide = "";
+    if(action === ""){
+        verifChaineUrlNonVide = "1";
+    }
     if(Id === ""){
         verifChaineUrlNonVide = "1";
     }
@@ -41,42 +46,67 @@ var verifChaineUrlNonVide = "";
     if(name === ""){
         verifChaineUrlNonVide = "1";
     }
+    if(prixUnitaire === ""){
+        verifChaineUrlNonVide = "1";
+    }
 if(verifChaineUrlNonVide > 0){
     window.location.href= retourUrl;
 }
-    console.log("panier :"+localStorage.getItem("panier"));
-//tri du panier
-if(localStorage.getItem("panier") == null){ //si panier d'origine car initialisation à null on ecrit directement dans le panier
-
-    var lignePanier = [Id, name, option, quantite, catalogue]; // mis dans un tableau pour panier
-    localStorage.setItem("panier", JSON.stringify(lignePanier));
-    window.location.href = retourUrl;// on revient à la page du produit
-}else{// c'est pas la première fois
-    console.log("choix en cour :"+Id);
-    var lignePanier = [Id, name, option, quantite, catalogue];
-    var data = JSON.parse(localStorage.getItem("panier"));
-        //on va d'abord voir si id existe deja
-        console.log("contenu storage: "+localStorage.getItem("panier"));
-        console.log("contenu data: "+data);
-
-        let i=0;
-            console.log("contenu data0:"+data[0]);
-            
-    if(data[0] != Id){// pas le meme produit a mettre dans le panier, donc on le met
-        data.push(lignePanier);
-        console.log("data apres push: "+data);
-        localStorage.setItem("panier", JSON.stringify(data)); // on remet tout dans le panier au bon format
-        console.log("panier apres push: "+localStorage.getItem("panier"));
-         window.location.href = retourUrl;// on revient à la page du produit
+ 
+//en fonction de l'action a faire sur le panier    
+if(action == "ajout"){ 
+    
+    
+    //création d'une class pour creer une ligne plus facilement:
+    class ligneDuPanier {
+        constructor(reference, nom, quantite, prixUnitaire, prixAjour, catalogue) {
+        this.reference = Id;
+        this.nom = nom;
+        this.quantite = quantite;
+        this.prixUnitaire = prixUnitaire;
+        this.prixAjour = prixAjour;
+        this.catalogue = catalogue;
+        }
     }
-        
     
-    
-    
-}
+        var prixAjour = prixUnitaire * quantite;// on change le prix si plus que 1 dans le panier
+        console.log("panier: "+localStorage.getItem("panier"));
+        //tri du panier
+        if(localStorage.getItem("panier") === "vide"){ //si panier d'origine car initialisation à null on ecrit directement dans le panier
+            const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue);
+            var Panier = [];
+            Panier.push(ligne); // mis dans un tableau pour panier
+            localStorage.setItem("panier", JSON.stringify(Panier));
+            window.location.href = retourUrl;// on revient à la page du produit
+        }else{ // c'est pas la première fois
+            // const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue); // nouveau produit a mettre dans panier
+            var data = JSON.parse(localStorage.getItem("panier"));
+            console.log(data.length);
+                    
+            var produitTrouve = false;
+            for(let x in data) {
+                 if(data[x].reference == Id){
+                     produitTrouve = true;
 
-    
-var data = JSON.parse(localStorage.getItem("panier"));
+                     // Augmenter la quantité et le prix
+                     data[x].quantite++;
+                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
+                 }
+            }
+            
+            if (!produitTrouve) {
+                const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue);
+                data.push(ligne);
+            }
+
+            // Sauvegarde du panier mis à jour
+            localStorage.setItem("panier", JSON.stringify(data));
+            window.location.href = retourUrl;// on revient à la page du produit    
+
+            // END
+        
+        }    //fin du else panier non vide
+}  // fin de l'action ajout
 
                      
 

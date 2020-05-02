@@ -11,8 +11,8 @@
 <body>
 <script>
   // on verifie si un panier existe, si non on cree le panier
-if (localStorage.getItem("panier") == "null") {
-localStorage.setItem("panier", "null");
+if (localStorage.getItem("panier") == null) {
+localStorage.setItem("panier", "vide");
 }
 
 /*requette XML vers le backend pour la page index.html */
@@ -50,7 +50,7 @@ function showCustomer(catalogue) {
 
 }
     let dataPanier = localStorage.getItem("panier");
-    console.log("Dans local panier:" +dataPanier);
+    console.log("Dans local panier: " +dataPanier);
 </script>
 <header>
     <button id="bouton1" onclick="showCustomer('teddies');">Voir les nounours</button>

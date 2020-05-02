@@ -9,10 +9,6 @@
     </head>
 
 <body>
-<header>
-    <div id="href"></div>
-</header>
-    
 <script type="text/javascript">
 // quelque variables utiles pour la formation de la page html
 const urlComplete = window.location.href; //recupere l'url
@@ -45,13 +41,16 @@ switch (catalogue){
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(this.responseText);
-                    // on boucle la premiere propriete /
-                    /*var choix = "";
-                    for (let i; i < response.propertyOne.length; i++){
-                            choix += response.propertyOne[i];
-                            console.log(choix);
-                    }*/
-                let article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ response.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ response.name +'</h2><div class="textDescription">'+ response.description +'</div><div class="divPrix">Prix: '+ response.price +' Euro</div><div id="selectOptionProduit"><form methode="GET" action= "gestionPanier.html"><laber>Quantité:</label><select name="quantite"><option value="1">1</option><option value="2">2</option></select><select name="option" id="select">article</select><input type="hidden" name="id" value="'+idProduit+'"><input type="hidden" name="urlRetour" value="'+urlComplete+'"><input type="hidden" name="name" value="'+response.name+'"><input type="hidden" name="catalogue" value="'+catalogue+'"><input type="submit" value="Mettre dans le panier" class="boutonSubmit"/></form></div></div></div></div></article>';    
+             // on boucle la premiere propriete /
+
+            var options = response[propertyOne]; // propertyOne transmet sa valeur a options
+
+            var selectOptions = "";
+            for (let x in options) {                
+                selectOptions += '<option value="' + options[x] + '">' + options[x] + '</option>';
+            }
+            
+                let article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ response.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ response.name +'</h2><div class="textDescription">'+ response.description +'</div><div class="divPrix">Prix: '+ response.price +' Euro</div><div id="selectOptionProduit"><form methode="GET" action= "gestionPanier.html"><laber>Quantité:</label><select name="quantite"><option value="1">1</option><option value="2">2</option></select><select name="option" id="select">'+selectOptions+'</select><input type="hidden" name="id" value="'+idProduit+'"><input type="hidden" name="urlRetour" value="'+urlComplete+'"><input type="hidden" name="actionPanier" value="ajout"><input type="hidden" name="name" value="'+response.name+'"><input type="hidden" name="prix" value="'+response.price+'"><input type="hidden" name="catalogue" value="'+catalogue+'"><input type="submit" value="Mettre dans le panier" class="boutonSubmit"/></form></div></div></div></div></article>';    
                 // affichage des differents article
                 let Resultats = document.getElementById("resultats"); //affichage dans id > resultats
                 Resultats.innerHTML += article;      
@@ -65,14 +64,16 @@ switch (catalogue){
 
     
 let dataPanier = localStorage.getItem("panier");
-console.log("Dans le panier:" +dataPanier);
 </script>
+<header>
+    <button><a href="index.html">Accueil</a></button>
+    <button><a href="panier.html">Panier</a></button>
+    
+</header>
 
 <section id="resultats">
-
 </section>
 </body>
 <footer>
 </footer>
-    
 </html>

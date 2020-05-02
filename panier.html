@@ -1,24 +1,45 @@
 <!DOCTYPE html>
+
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
         <link type="text/css" rel="stylesheet" href="css/styles.css" />
         <script src="js/scripts.js"></script>
-        <title>ORINOCO - Accueil Catalogue</title>
+        <title>ORINOCO - Panier</title>
     </head>
 
 <body>
 <script>
+        var produitsLocal = JSON.parse(localStorage.getItem("panier"));
+    
 
-     var data = localStorage.getItem("panier");
-    console.log("dans le panier: "+data);
-    for(var i=0; i < data.length; i++){
-        console.log("data0: "+data[1]);
-    }
+//requette XML vers le backend
+    let xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.responseText);
+             // on boucle la premiere propriete /
+        }//fin du if readyState
+    };
+    xhttp.open("GET", "http://localhost:3000/api/"+catalogue+"/"+idProduit, true);
+    xhttp.send();
+
 
     
 
-    
+
+
 </script>
-    
+<header>
+    <button><a href="index.html">Accueil</a></button>
+    <button><a href="panier.html">Panier</a></button>
+</header>
+
+<section id="resultats">
+
+</section>
 </body>
+<footer>
+</footer>
+</html>
