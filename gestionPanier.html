@@ -22,6 +22,9 @@ const catalogue = urlParams.get('catalogue') // recupere produit
 const retourUrl = urlParams.get('urlRetour') // recupere produit
 const name = urlParams.get('name') // recupere nom du produit
 const prixUnitaire = urlParams.get('prix') // recupere nom du produit
+const urlImage = urlParams.get('urlImage') // recupere nom du produit
+const description = urlParams.get('description') // recupere nom du produit
+
 
 //detection si tout est bon dans la transmission pas de modif utilisateur...
 var verifChaineUrlNonVide = "";
@@ -49,6 +52,12 @@ var verifChaineUrlNonVide = "";
     if(prixUnitaire === ""){
         verifChaineUrlNonVide = "1";
     }
+    if(urlImage === ""){
+        verifChaineUrlNonVide = "1";
+    }
+    if(description === ""){
+        verifChaineUrlNonVide = "1";
+    }   
 if(verifChaineUrlNonVide > 0){
     window.location.href= retourUrl;
 }
@@ -59,7 +68,7 @@ if(action == "ajout"){
     
     //création d'une class pour creer une ligne plus facilement:
     class ligneDuPanier {
-        constructor(reference, nom, quantite, option, prixUnitaire, prixAjour, catalogue) {
+        constructor(reference, nom, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description) {
         this.reference = Id;
         this.nom = nom;
         this.quantite = quantite;
@@ -67,14 +76,15 @@ if(action == "ajout"){
         this.prixUnitaire = prixUnitaire;
         this.prixAjour = prixAjour;
         this.catalogue = catalogue;
+        this.urlImage = urlImage;
+        this.description = description
         }
     }
     
         var prixAjour = prixUnitaire * quantite;// on change le prix si plus que 1 dans le panier
-        console.log("panier: "+localStorage.getItem("panier"));
         //tri du panier
         if(localStorage.getItem("panier") === "vide"){ //si panier d'origine car initialisation à null on ecrit directement dans le panier
-            const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue);
+            const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
             var Panier = [];
             Panier.push(ligne); // mis dans un tableau pour panier
             localStorage.setItem("panier", JSON.stringify(Panier));
@@ -95,7 +105,7 @@ if(action == "ajout"){
             }
             
             if (!produitTrouve) {
-                const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue);
+                const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
                 data.push(ligne);
             }
 
@@ -108,12 +118,55 @@ if(action == "ajout"){
         }    //fin du else panier non vide
 }  // fin de l'action ajout
 
-                     
+if(action == "modificationPlus"){ // modification quantite panier en plus
+var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
+ var produitTrouve = false;
+            for(let x in data) {
+                 if(data[x].reference == Id){
+                     produitTrouve = true;
 
-    
+                     // Augmenter la quantité et le prix
+                     data[x].quantite++;
+                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
+                 }
+            }
+            // Sauvegarde du panier mis à jour
+            localStorage.setItem("panier", JSON.stringify(data));
+            window.location.href = "panier.html";// on revient à la page du produit  */    
+}// fin de modificationPlus                  
+if(action == "modificationMoins"){ // modification quantite panier en moins
+var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
+ var produitTrouve = false;
+            for(let x in data) {
+                 if(data[x].reference == Id){
+                     produitTrouve = true;
 
+                     // Augmenter la quantité et le prix
+                     data[x].quantite--;
+                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
+                 }
+            }
+            // Sauvegarde du panier mis à jour
+            localStorage.setItem("panier", JSON.stringify(data));
+            window.location.href = "panier.html";// on revient à la page du produit  */    
+}// fin de modificationMoins
     
-//window.location.href = retourUrl;// on revient à la page du produit
+if(action == "modificationSupprimerLigne"){ // modification supprimer du panier
+var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
+ var produitTrouve = false;
+            for(let x in data) {
+                 if(data[x].reference == Id){
+                     produitTrouve = true;
+
+                     // Augmenter la quantité et le prix
+                     data[x].quantite--;
+                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
+                 }
+            }
+            // Sauvegarde du panier mis à jour
+            localStorage.setItem("panier", JSON.stringify(data));
+            window.location.href = "panier.html";// on revient à la page du produit  */    
+}// fin de modificationSupprimerLigne
 
 </script>
 
