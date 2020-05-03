@@ -9,8 +9,7 @@
 
 <body>
 <script type="text/javascript">
-    
-//quelque variable utiles
+//////////////////////////////////// VARIABLES ET VERIFICATION POUR LE TRAITEMENT //////////////////////////////////////////////////////
 const urlComplete = window.location.href; //recupere l'url
 const queryString = window.location.search; 
 const urlParams = new URLSearchParams(queryString); //recupere apres le ? de l'url
@@ -62,7 +61,10 @@ if(verifChaineUrlNonVide > 0){
     window.location.href= retourUrl;
 }
  
-//en fonction de l'action a faire sur le panier    
+//////////////////////////////////// END //////////////////////////////////////////////////////
+    
+    
+//////////////////////////////////// AUTRE //////////////////////////////////////////////////////   
 if(action == "ajout"){ 
     
     
@@ -110,14 +112,22 @@ if(action == "ajout"){
             }
 
             // Sauvegarde du panier mis à jour
-            localStorage.setItem("panier", JSON.stringify(data));
+            localStorage.setItem("panier", JSON.stringify(data)); 
             window.location.href = retourUrl;// on revient à la page du produit    
 
             // END
         
         }    //fin du else panier non vide
-}  // fin de l'action ajout
+    
 
+    
+    
+}
+    
+//////////////////////////////////// END //////////////////////////////////////////////////////
+    
+    
+//////////////////////////////////// AUTRE //////////////////////////////////////////////////////
 if(action == "modificationPlus"){ // modification quantite panier en plus
 var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
  var produitTrouve = false;
@@ -148,9 +158,13 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
             }
             // Sauvegarde du panier mis à jour
             localStorage.setItem("panier", JSON.stringify(data));
-            window.location.href = "panier.html";// on revient à la page du produit  */    
-}// fin de modificationMoins
     
+            window.location.href = "panier.html";// on revient à la page du produit  */    
+}
+//////////////////////////////////// END //////////////////////////////////////////////////////
+    
+    
+//////////////////////////////////// AUTRE //////////////////////////////////////////////////////
     
 if(action == "eCommande"){
   
@@ -164,9 +178,9 @@ const codePostal = urlParams.get('codePostal') //recupere catalogue
 
     class formatUtilisateur {
         constructor(nom, prenom, adresse, mail) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = numero +' '+ adresse +' '+codePostal +' '+ ville;
+        this.lastname = nom;
+        this.firstname = prenom;
+        this.address = numero +' '+ adresse +' '+codePostal +' '+ ville;
         this.email = mail;
         }
     } 
@@ -196,14 +210,11 @@ request.open("POST", "http://localhost:3000/api/teddies/order);
 request.setRequestHeader("Content-Type", "application/json");
 request.send(JSON.stringify(products));*/
     
-    
-    
-    
-   
-    
-    
-    
 }
+//////////////////////////////////// END //////////////////////////////////////////////////////
+    
+    
+//////////////////////////////////// AUTRE //////////////////////////////////////////////////////
 </script>
 
 

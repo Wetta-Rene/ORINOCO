@@ -12,10 +12,16 @@
     <button><a href="index.html">Accueil</a></button>
     <button><a href="panier.html">Panier</a></button>
 </header>
-<section id="sectionPanier">
-    <article id="resultatsPanier">
+<section id="resultatsPanier">
+</section>
+<section id="totauxPanier">
+    <article>
+        <div id="totalArticles"></div>
+        <div id="totalPrix"></div>
     </article>
-     <article id="contactPanier">
+</section>
+<section id="contactPanier">
+     <article class="elementPanier">
          <fieldset><legend>Pour passer commande</legend>
              <form method="get" action="gestionPanier.html">
                 <p><label for='nom'>Nom:</label>
@@ -38,28 +44,20 @@
                  <input type='submit' value='Envoyer la commande' id='bouton_envoi'>
              </form>
          </fieldset>
-        
     </article>   
+</section>   
     
     
-    
-</section>
+
 <script>
  ///////partie contact
-nom.addEventListener('input', function(e) {
-    var value = e.target.value;
-    if (value.startsWith('Hello ')) {
-        isValid = console.log("nom: OK");
-    } else {
-        isValid = console.log("nom: KO");
-    }
-});
+
     
     
     
     
 ///////////partie panier
-         var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+     var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
         if(produitsLocal == ""){//panier vide ou inexistant
             document.getElementById("resultats").innerHTML = '<div class="messagePanierVide">Le panier semble vide !!<p><a href="index.html">Allez voir nos catalogues !</a></p></div>';  
         }
@@ -80,7 +78,7 @@ nom.addEventListener('input', function(e) {
                     signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a>';
                 }
                 
-                let ligne = '<article id="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+</a><br />'+signeMoinsPanier+'</div></div></article>';  
+                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+</a><br />'+signeMoinsPanier+'</div></div></article>';  
                            
 
                 
@@ -89,6 +87,14 @@ nom.addEventListener('input', function(e) {
                 //affichage du panier
                 document.getElementById("resultatsPanier").innerHTML += ligne;                     
             }// fin for produilocal
+            const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
+            document.getElementById("totalArticles").innerHTML = "Nombre d'articles: "+totalDesArticlesDuPanier;  
+    
+            const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
+            document.getElementById("totalPrix").innerHTML = "Prix total TTC: "+prixTotalDuPanier;
+    
+    
+///////////*END PANIER*///////
 </script>
 
 
