@@ -6,9 +6,17 @@
         <link type="text/css" rel="stylesheet" href="css/styles.css" />
         <script src="js/scripts.js"></script>
         <title>ORINOCO - Accueil Catalogue</title>
-    </head>
+   </head>
 
 <body>
+    <header>
+    <button><a href="index.html">Accueil</a></button>
+    <button><a href="panier.html">Panier</a></button>
+    
+</header>
+
+<section id="resultats">
+</section>
 <script>
   // on verifie si un panier existe, si non on cree le panier
 if (localStorage.getItem("panier") == null) {
@@ -16,14 +24,11 @@ localStorage.setItem("panier", "vide");
 }
 
 /*requette XML vers le backend pour la page index.html */
-function showCustomer(catalogue) {
+
     /*nettoyage du div en cas de remplissage avant*/
     document.getElementById("resultats").innerHTML = "";
+    var catalogue = "teddies"; // ici on peut changer de catalogue
     var xhttp;
-    if (catalogue == "") {
-        document.getElementById("resultats").innerHTML = "";
-        return;
-    }
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -45,23 +50,12 @@ function showCustomer(catalogue) {
             
         }//fin du if readyState
     };
-    xhttp.open("GET", "http://localhost:3000/api/" + catalogue, true);
+    xhttp.open("GET", "http://localhost:3000/api/"+catalogue, true);
     xhttp.send();
-
-}
-    let dataPanier = localStorage.getItem("panier");
-    console.log("Dans local panier: " +dataPanier);
 </script>
-<header>
-    <button id="bouton1" onclick="showCustomer('teddies');">Voir les nounours</button>
-    <button id="bouton2" onclick="showCustomer('furniture');">Voir les tables en chêne</button>
-    <button id="bouton3" onclick="showCustomer('cameras');">Voir les caméras</button>
-    <button><a href="panier.html">Panier</a></button>
-</header>
 
-<section id="resultats">
 
-</section>
+
 </body>
 <footer>
 </footer>
