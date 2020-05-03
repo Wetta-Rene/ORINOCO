@@ -97,3 +97,14 @@ header {
 .element-lignePanier:nth-child(1) img{
     width: 100%;
 }
+
+
+input:invalid {
+ box-shadow: 2px 2px 0 0 red;
+  box-shadow: 0 0 2px 2px red;
+}
+
+input:valid {
+ box-shadow: 2px 2px 0 0 green;
+  box-shadow: 0 0 2px 2px green;
+}

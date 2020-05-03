@@ -12,21 +12,72 @@
     <button><a href="index.html">Accueil</a></button>
     <button><a href="panier.html">Panier</a></button>
 </header>
-<section id="resultats">
+<section id="sectionPanier">
+    <article id="resultatsPanier">
+    </article>
+     <article id="contactPanier">
+         <fieldset><legend>Contact</legend>
+             <form method="get" action="gestionPanier.html">
+                <p><label for='nom'>Nom:</label>
+                <input type='text' name='nom' id='nom' pattern="^[a-zA-Z]+$" maxlenght='20' placeholder="Entrez votre nom !" required>
+                 </p>
+                <p><label for='prenom'>Prénom:</label>
+                 <input type='text' name='prenom' id='prenom' pattern="^[a-zA-Z]+$" maxlenght='20' placeholder="Entrez votre prénom !" required>
+                 </p>
+                <p>
+                <label for='nom'>Adresse:</label>
+                <input type='text' name='adresse' id='adresse' placeholder="Entrez votre adresse complète !" maxlength="60" required>
+                <input type='text' name='codePostal' id='codePostal' pattern="[0-9]{5}" maxlength="5" placeholder="Code postale !" required><input type='text' name='ville' id='ville' pattern="^[a-zA-Z]+$" placeholder="Ville !" maxlength="30" required>
+                 </p>
 
+                 <p>
+                 <label for='mail'>Email:</label>
+                 <input type='email' name='mail' id='mail' required>
+                 </p>
+                 <input type="hidden" name="actionPanier" value="eCommande">
+                 <input type='submit' value='Envoyer la commande' id='bouton_envoi'>
+             </form>
+         </fieldset>
+        
+    </article>   
+    
+    
+    
 </section>
 <script>
+ ///////partie contact
+nom.addEventListener('input', function(e) {
+    var value = e.target.value;
+    if (value.startsWith('Hello ')) {
+        isValid = console.log("nom: OK");
+    } else {
+        isValid = console.log("nom: KO");
+    }
+});
+    
+    
+    
+    
+///////////partie panier
          var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
-      
+        if(produitsLocal == ""){//panier vide ou inexistant
+            document.getElementById("resultats").innerHTML = '<div class="messagePanierVide">Le panier semble vide !!<p><a href="index.html">Allez voir nos catalogues !</a></p></div>';  
+        }
+    
+    
+    
+    
+    
+    
             for(let x in produitsLocal) { // on balaye le contenu du panier
                 var ligneProduitLocal = produitsLocal[x];  //>> recherche  ligneProduitLocal.nom
-                
+              
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
                     signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
-                    signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+ligneProduitLocal.reference+'">Supprimer le produit</a>';
+                    signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a>';
                 }
                 
                 let ligne = '<article id="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+</a><br />'+signeMoinsPanier+'</div></div></article>';  
@@ -36,7 +87,7 @@
                 
                 
                 //affichage du panier
-                document.getElementById("resultats").innerHTML += ligne;                     
+                document.getElementById("resultatsPanier").innerHTML += ligne;                     
             }// fin for produilocal
 </script>
 

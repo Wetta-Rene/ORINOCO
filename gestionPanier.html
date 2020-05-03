@@ -151,23 +151,59 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
             window.location.href = "panier.html";// on revient à la page du produit  */    
 }// fin de modificationMoins
     
-if(action == "modificationSupprimerLigne"){ // modification supprimer du panier
-var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
- var produitTrouve = false;
-            for(let x in data) {
-                 if(data[x].reference == Id){
-                     produitTrouve = true;
+    
+if(action == "eCommande"){
+  
+const prenom = urlParams.get('prenom') //recupere catalogue
+const nom = urlParams.get('nom') //recupere catalogue 
+const mail = urlParams.get('mail') //recupere catalogue
+const numero = urlParams.get('numero') //recupere catalogue
+const ville = urlParams.get('ville') //recupere catalogue  
+const adresse = urlParams.get('adresse') //recupere catalogue  
+const codePostal = urlParams.get('codePostal') //recupere catalogue
 
-                     // Augmenter la quantité et le prix
-                     data[x].quantite--;
-                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
-                 }
-            }
-            // Sauvegarde du panier mis à jour
-            localStorage.setItem("panier", JSON.stringify(data));
-            window.location.href = "panier.html";// on revient à la page du produit  */    
-}// fin de modificationSupprimerLigne
-
+    class formatUtilisateur {
+        constructor(nom, prenom, adresse, mail) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = numero +' '+ adresse +' '+codePostal +' '+ ville;
+        this.email = mail;
+        }
+    } 
+    
+const utilisateur = new formatUtilisateur(nom, prenom, adresse, mail);    
+    
+    
+    
+   var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier
+    console.log("hello")
+    var commande = [];//on initie la commande
+    
+    for(var x=0; x < produitsLocal.length; x++){
+        var ligneProduit = produitsLocal[x];
+        commande.push(ligneProduit.reference);
+    }
+    console.log(utilisateur)
+    console.log(commande)
+    
+    var products = [];
+    products.push(utilisateur);
+    products.push(commande)
+    console.log(products)
+    console.log(JSON.stringify(products))
+/*var request = new XMLHttpRequest();
+request.open("POST", "http://localhost:3000/api/teddies/order);
+request.setRequestHeader("Content-Type", "application/json");
+request.send(JSON.stringify(products));*/
+    
+    
+    
+    
+   
+    
+    
+    
+}
 </script>
 
 
