@@ -73,7 +73,8 @@
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
-                    signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
+                    signeMoinsPanier =  '<button onclick="fonctionActionPanier(ligneProduitLocal.reference)">Moins</button>';
+                    //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
                     signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a>';
                 }

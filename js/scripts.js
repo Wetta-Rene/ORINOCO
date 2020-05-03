@@ -48,19 +48,4 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
     
 }
 
-/*if(action == "modificationPlus"){ // modification quantite panier en plus
-var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
- var produitTrouve = false;
-            for(let x in data) {
-                 if(data[x].reference == Id){
-                     produitTrouve = true;
-
-                     // Augmenter la quantité et le prix
-                     data[x].quantite++;
-                     data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
-                 }
-            }
-            // Sauvegarde du panier mis à jour
-            localStorage.setItem("panier", JSON.stringify(data));
-            window.location.href = "panier.html";// on revient à la page du produit    
-}// fin de modificationPlus  
+ 
