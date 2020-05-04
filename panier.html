@@ -61,29 +61,36 @@ document.getElementById("header").innerHTML = contenuHeader;
     
     
 ///////////partie panier
-     var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
-        if(produitsLocal == ""){//panier vide ou inexistant
+
+        if(localStorage.getItem("panier") === "vide"){//panier vide ou inexistant
             document.getElementById("resultats").innerHTML = '<div class="messagePanierVide">Le panier semble vide !!<p><a href="index.html">Allez voir nos catalogues !</a></p></div>';  
-        }
-    
-    
-    
-    
-    
-    
+        }else{
+        var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+            //////////////////////quelques variables utiles dans le panier////////////////////
+            
+            
+            
+            
+            
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            
+            
+            
             for(let x in produitsLocal) { // on balaye le contenu du panier
                 var ligneProduitLocal = produitsLocal[x];  //>> recherche  ligneProduitLocal.nom
               
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
-                    signeMoinsPanier =  '<button onclick="fonctionActionPanier(ligneProduitLocal.reference)">Moins</button>';
+                    signeMoinsPanier =  '<button><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">Enlever</a></button>';
                     //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
-                    signeMoinsPanier = '<a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a>';
+                    signeMoinsPanier = '<button><a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a></button>';
                 }
                 
-                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+</a><br />'+signeMoinsPanier+'</div></div></article>';  
+let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><button><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">Ajouter</a></button><br />'+signeMoinsPanier+'</div></div></article>';  
                            
 
                 
@@ -93,11 +100,11 @@ document.getElementById("header").innerHTML = contenuHeader;
                 document.getElementById("resultatsPanier").innerHTML += ligne;                     
             }// fin for produilocal
             const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
-            document.getElementById("totalArticles").innerHTML = "Nombre d'articles: "+totalDesArticlesDuPanier;  
+            document.getElementById("totalArticles").innerHTML = 'Nombre d\'articles: '+totalDesArticlesDuPanier;  
     
             const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
-            document.getElementById("totalPrix").innerHTML = "Prix total TTC: "+prixTotalDuPanier;
-    
+            document.getElementById("totalPrix").innerHTML = 'Prix total TTC: '+prixTotalDuPanier;
+        }
     
 ///////////*END PANIER*///////
 </script>

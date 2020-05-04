@@ -1,7 +1,30 @@
+@mixin classBouton{
+        border: 2px solid black;
+        border-radius: 5px;
+        margin: 2%;
+        background-color: brown;
+    }
+
 body {
     width: 98%;
     margin: auto;
+    background-color: cornsilk 
 }
+
+header{
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+button{
+     @include classBouton;
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+
+
 #containerNav {
     display: flex;
     flex-direction: row;
@@ -11,11 +34,6 @@ body {
 .divNav:nth-child(1) {
     display: flex;
     flex-basis: 50%;
-}
-
-li {
-    list-style: none;
-    display: inline-block;
 }
 
 .containerArticle {
@@ -62,42 +80,94 @@ h1 {
     font-weight: bolder;
 }
 
-header {
+.divPrix{
     margin-top: 2%;
-    margin-bottom: 2%;
+    text-align: right;
 }
 
 #selectOptionProduit{
     text-align: center;
     margin-top: 4%;
+}
+.boutonSubmit{
+    margin-top: 2%;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+//gestion du panier
+#resultatsPanier{
     margin-bottom: 2%;
 }
-
-.boutonSubmit{
-    margin-left: 2%;
-}
-
-.divPrix{
-    margin-top: 2%;
-    text-align: right;
-}
-//gestion du panier
 .ContenairePanier{
     width: 98%;
     margin: auto;
+    margin-bottom: 2%;
 }
 .contenaireLignePanier{
-    width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid black;
 }
+
 .element-lignePanier{
-    flex-basis: 20%;
+    display: flex;
+}
+.element-lignePanier:nth-child(1){
+    flex-basis: 30%;
+    order: 1;
 }
 .element-lignePanier:nth-child(1) img{
     width: 100%;
 }
+.element-lignePanier:nth-child(2){
+    flex-basis: 8%;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 1%;
+    text-align: center;
+    order: 2;
 
+}
+.element-lignePanier:nth-child(3){
+    flex-basis: 64%;
+    padding: 1%;
+    text-align: justify;
+    order: 6;
+
+}
+.element-lignePanier:nth-child(4){
+    padding: 1%;
+    flex-basis: 14%;
+    text-align: center;
+    order: 3;
+}
+.element-lignePanier:nth-child(5){
+    flex-basis: 10%;
+    text-align: center;
+    padding: 1%;
+    order: 4;
+}
+.element-lignePanier:nth-child(6){
+    flex-basis: 15%;
+    text-align: center;
+    padding: 1%;
+    order: 5;
+}
+.element-lignePanier:nth-child(7){
+    flex-basis: 30%;
+    order: 7;
+    display: flex;
+}
 
 input:invalid {
  box-shadow: 2px 2px 0 0 red;
@@ -107,4 +177,19 @@ input:invalid {
 input:valid {
  box-shadow: 2px 2px 0 0 green;
   box-shadow: 0 0 2px 2px green;
+}
+#totauxPanier {
+    width: 80%;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    text-align: center;
+    font-weight: bolder;
+}
+#totalArticles{
+    display: inline;
+}
+#totalPrix{
+    display: inline;
+    margin-left: 5%;
 }

@@ -1,16 +1,21 @@
+/////////////////////////////// INITIALISATION D'UN PANIER    //////////////////////////////////////////////
+    if (localStorage.getItem("panier") == null) {
+    localStorage.setItem("panier", "vide");
+    }
+////////////////////////////////////////// END ///////////////////////////////////////////////
 
 /////////////////////fonction calcul total des articles du pannier////////////////////////////
 var functionCalculArticlesDuPanier = function(){
 var paniers = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
-var tableauDeContageArticle = [];
-            for(let x in paniers) {
-               var lignePanier = paniers[x] ;
-                tableauDeContageArticle.push(lignePanier.quantite);
-            }
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;// calcul sommes de chaque donnee du tableau
-    const totalDesArticlesDuPanier = tableauDeContageArticle.reduce(reducer);
-return totalDesArticlesDuPanier;
-}
+        var tableauDeContageArticle = [];
+                    for(let x in paniers) {
+                       var lignePanier = paniers[x] ;
+                        tableauDeContageArticle.push(lignePanier.quantite);
+                    }
+            const reducer = (accumulator, currentValue) => accumulator + currentValue;// calcul sommes de chaque donnee du tableau
+            const totalDesArticlesDuPanier = tableauDeContageArticle.reduce(reducer);
+        return totalDesArticlesDuPanier;
+        }
 
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 
@@ -53,7 +58,7 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
 var fonctionAffichageHeader = function (){
 let affichageCoteBoutonPanier = null;
 if(localStorage.getItem("panier") === "vide"){// panier vide
-     affichageCoteBoutonPanier = '<button><a href="index.html">Accueil</a></button><button><a href="panier.html" title="0.00€">Panier (0 article)</a></button>';  
+     affichageCoteBoutonPanier = '<button class="bouton"><a href="index.html">Accueil</a></button><button class="bouton"><a href="panier.html" title="0.00€">Panier (0 article)</a></button>';  
  }else{
       const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
       const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
@@ -70,3 +75,4 @@ return affichageCoteBoutonPanier;
      
  //////////////////////////////////////////////  END    ////////////////////////////////////////////////////
  
+

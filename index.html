@@ -10,8 +10,9 @@
 
 <body>
     <header id="header"></header>
-
+     <h1 id="baliseH1"></h1>      
 <section id="resultats">
+ 
 </section>
 <script>
 ////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
@@ -20,19 +21,14 @@ document.getElementById("header").innerHTML = contenuHeader;
 ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
     
     
-// on verifie si un panier existe, si non on cree le panier
-if (localStorage.getItem("panier") == null) {
-localStorage.setItem("panier", "vide");
-}
-
-
-    
-    
 /*requette XML vers le backend pour la page index.html */
 
     /*nettoyage du div en cas de remplissage avant*/
     document.getElementById("resultats").innerHTML = "";
     var catalogue = "teddies"; // ici on peut changer de catalogue
+    
+
+    
     var xhttp;
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -40,13 +36,28 @@ localStorage.setItem("panier", "vide");
             var response = JSON.parse(this.responseText);
 
             var Resultats = document.getElementById("resultats"); //affichage dans id > resultats
+            //////////////////// SWITCH TITRE DE LA PAGE EN FONCTION DE LA REQUETTE////////////////
+            /*var contenuH1 = "";
+            switch (catalogue){
+                case "teddies":
+                    contenuH1 = "LES NOUNOURS";
+                     break;
+                    case "cameras":
+                     contenuH1 = "LES CAMERAS VINTAGE";
+                     break;
+                    case "furniture":
+                     contenuH1 = "LES MEUBLES ANCIENS";
+                     break;
+            }
+            console.log(contenuH1)
+            document.getElementById(baliseH1).innerHTML = contenuH1;*/
+      //////////////// END /////////////////
             
-
             for (var i = 0; i < response.length; i++){
                 var objet = response[i];
                 
 
-                var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div class="lienPageCustomArticle"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'"> >> Personnalisé ce produit</a></div></div></div></article>';
+                var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="'+ objet.imageUrl +'" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>'+ objet.name +'</h2><div class="textDescription">'+ objet.description +'</div><div class="divPrix">Prix: '+ objet.price +' Euro</div><div class="lienPageCustomArticle"><button class="bouton"><a href="produit.html?catalogue='+catalogue+'&produit='+objet._id+'">> Personnalisé ce produit</a></button></div></div></div></article>';
 
                 // affichage des differents article
                 Resultats.innerHTML += article;      
@@ -57,6 +68,8 @@ localStorage.setItem("panier", "vide");
     };
     xhttp.open("GET", "http://localhost:3000/api/"+catalogue, true);
     xhttp.send();
+    
+
 </script>
 
 
