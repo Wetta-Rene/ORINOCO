@@ -47,5 +47,26 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
             window.location.href = "panier.html";// on revient à la page du panier   
     
 }
+////////////////////////////////////////// END ///////////////////////////////////////////////
 
+///////////////////////////////   Affichage à cote du bouton panier     //////////////////////////////////////////////
+var fonctionAffichageHeader = function (){
+let affichageCoteBoutonPanier = null;
+if(localStorage.getItem("panier") === "vide"){// panier vide
+     affichageCoteBoutonPanier = '<button><a href="index.html">Accueil</a></button><button><a href="panier.html" title="0.00€">Panier (0 article)</a></button>';  
+ }else{
+      const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
+      const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
+       let plurielArticleBoutonPanier = "";
+        if(totalDesArticlesDuPanier > 1){// mettre S a article ou pas
+            plurielArticleBoutonPanier = "articles";
+        }else{
+            plurielArticleBoutonPanier = "article";
+        }
+      affichageCoteBoutonPanier = '<button><a href="index.html">Accueil</a></button><button><a href="panier.html" title="'+prixTotalDuPanier+'€">Panier ('+totalDesArticlesDuPanier+' '+plurielArticleBoutonPanier+')</a></button>'; 
+ }
+return affichageCoteBoutonPanier;
+}
+     
+ //////////////////////////////////////////////  END    ////////////////////////////////////////////////////
  

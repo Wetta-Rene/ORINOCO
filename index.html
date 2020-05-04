@@ -9,20 +9,25 @@
    </head>
 
 <body>
-    <header>
-    <button><a href="index.html">Accueil</a></button>
-    <button><a href="panier.html">Panier</a></button>
-    
-</header>
+    <header id="header"></header>
 
 <section id="resultats">
 </section>
 <script>
-  // on verifie si un panier existe, si non on cree le panier
+////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
+var contenuHeader = fonctionAffichageHeader();
+document.getElementById("header").innerHTML = contenuHeader; 
+///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
+    
+    
+// on verifie si un panier existe, si non on cree le panier
 if (localStorage.getItem("panier") == null) {
 localStorage.setItem("panier", "vide");
 }
 
+
+    
+    
 /*requette XML vers le backend pour la page index.html */
 
     /*nettoyage du div en cas de remplissage avant*/

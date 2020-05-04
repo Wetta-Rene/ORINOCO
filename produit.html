@@ -9,15 +9,16 @@
     </head>
 
 <body>
-    <header>
-    <button><a href="index.html">Accueil</a></button>
-    <button><a href="panier.html">Panier</a></button>
-    
-</header>
+    <header id="header"></header>
 
 <section id="resultats">
 </section>
 <script type="text/javascript">
+////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
+var contenuHeader = fonctionAffichageHeader();
+document.getElementById("header").innerHTML = contenuHeader; 
+///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
+    
 // quelque variables utiles pour la formation de la page html
 const urlComplete = window.location.href; //recupere l'url
 const queryString = window.location.search; 
