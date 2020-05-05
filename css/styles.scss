@@ -1,17 +1,33 @@
+
+/////////////// VARIABLES GLOBALES ///////////////////
+$backgroundColorBody: #F6ECFD;
+$backgroundColorProduit: #B184B5;
+$backgroundColorBouton: #C9875B;
+
 @mixin classBouton{
         border: 2px solid black;
         border-radius: 5px;
         margin: 2%;
-        background-color: brown;
+        background-color: $backgroundColorBouton;
     }
 
+/////////////// FIN VARIABLE GLOBALE ///////////////////
+
+/////////////// PAGES INDEX ET PRODUIT ///////////////////
+html{
+    background-color: $backgroundColorBody;
+}
 body {
     width: 98%;
     margin: auto;
-    background-color: cornsilk 
+    background-color: $backgroundColorBody;
 }
-
 header{
+    text-align: center;
+    padding: 2%;
+    background-color: #F6ECFD;
+}
+nav{
     text-align: center;
     margin-bottom: 2%;
     margin-top: 2%;
@@ -42,6 +58,7 @@ button{
     flex-wrap: nowrap;
     margin-bottom: 2%;
     border: 1px solid black;
+    background-color: $backgroundColorProduit;
 }
 
 .elementContainerArticle {
@@ -103,7 +120,8 @@ h1 {
 
 
 
-//gestion du panier
+
+/////////////// GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
 #resultatsPanier{
     margin-bottom: 2%;
 }
@@ -123,23 +141,22 @@ h1 {
     display: flex;
 }
 .element-lignePanier:nth-child(1){
-    flex-basis: 30%;
+    width: 30%;
+    padding: 1%;
     order: 1;
 }
 .element-lignePanier:nth-child(1) img{
-    width: 100%;
+    width: 98%;
 }
 .element-lignePanier:nth-child(2){
-    flex-basis: 8%;
-    margin-left: 4%;
-    margin-right: 4%;
+    width: 18%;
     padding: 1%;
-    text-align: center;
+   text-align: center;
     order: 2;
 
 }
 .element-lignePanier:nth-child(3){
-    flex-basis: 64%;
+    flex-basis: 63%;
     padding: 1%;
     text-align: justify;
     order: 6;
@@ -147,28 +164,35 @@ h1 {
 }
 .element-lignePanier:nth-child(4){
     padding: 1%;
-    flex-basis: 14%;
+    width: 14%;
     text-align: center;
     order: 3;
 }
 .element-lignePanier:nth-child(5){
-    flex-basis: 10%;
+    width: 8%;
     text-align: center;
     padding: 1%;
     order: 4;
 }
 .element-lignePanier:nth-child(6){
-    flex-basis: 15%;
+    flex-basis: 18%;
     text-align: center;
     padding: 1%;
     order: 5;
 }
 .element-lignePanier:nth-child(7){
-    flex-basis: 30%;
+    width: 32%;
+    padding: 1%;
     order: 7;
+    text-align: center;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
-
+.sousElement-lignePanier{
+    display: flex;
+    
+}
 input:invalid {
  box-shadow: 2px 2px 0 0 red;
   box-shadow: 0 0 2px 2px red;
@@ -193,3 +217,4 @@ input:valid {
     display: inline;
     margin-left: 5%;
 }
+/////////////// END GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////

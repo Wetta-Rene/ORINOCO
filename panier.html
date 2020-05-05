@@ -8,7 +8,9 @@
     </head>
 
 <body>
-    <header id="header"></header>
+<header><img src="images/logoOrinoco.png" ></header>
+<nav id="header"></nav>
+<h1 id="baliseH1"></h1>      
 <section id="resultatsPanier">
 </section>
 <section id="totauxPanier">
@@ -84,13 +86,13 @@ document.getElementById("header").innerHTML = contenuHeader;
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
-                    signeMoinsPanier =  '<button><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">Enlever</a></button>';
+                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">Enlever</a></button></div>';
                     //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
-                    signeMoinsPanier = '<button><a href="gestionPanier.html?actionPanier=modificationSupprimerLigne&id='+x+'">Supprimer le produit</a></button>';
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a class="boutonPanierQuantiteDelete" id="'+x+'" href="#" onclick="deletePanier('+x+')">Supprimer le produit</a></button></div>';
                 }
                 
-let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><button><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">Ajouter</a></button><br />'+signeMoinsPanier+'</div></div></article>';  
+let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">Ajouter</a></button></div>'+signeMoinsPanier+'</div></div></article>';  
                            
 
                 
@@ -100,7 +102,13 @@ let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier
                 document.getElementById("resultatsPanier").innerHTML += ligne;                     
             }// fin for produilocal
             const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
-            document.getElementById("totalArticles").innerHTML = 'Nombre d\'articles: '+totalDesArticlesDuPanier;  
+            ///// articles au pluriel ou pas //////////////////
+            if(totalDesArticlesDuPanier > 1){// mettre S a article ou pas
+                plurielArticleBoutonPanier = "articles";
+            }else{
+                plurielArticleBoutonPanier = "article";
+            }
+            document.getElementById("totalArticles").innerHTML = 'Nombre d\''+plurielArticleBoutonPanier+': '+totalDesArticlesDuPanier;  
     
             const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
             document.getElementById("totalPrix").innerHTML = 'Prix total TTC: '+prixTotalDuPanier;
