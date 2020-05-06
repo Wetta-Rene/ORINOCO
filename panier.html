@@ -86,13 +86,13 @@ document.getElementById("header").innerHTML = contenuHeader;
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
-                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">Enlever</a></button></div>';
+                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-1</a></button></div>';
                     //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
-                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a class="boutonPanierQuantiteDelete" id="'+x+'" href="#" onclick="deletePanier('+x+')">Supprimer le produit</a></button></div>';
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationDelete&id='+x+'">Supprimer</a></button></div>';
                 }
                 
-let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">Ajouter</a></button></div>'+signeMoinsPanier+'</div></div></article>';  
+let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+1</a></button></div>'+signeMoinsPanier+'</div></div></article>';  
                            
 
                 

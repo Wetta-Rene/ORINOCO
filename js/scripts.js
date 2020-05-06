@@ -50,15 +50,7 @@ var produitTrouve = false;
     
 }
 
-function deletePanier(a){
-    let id = a;
-    var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
-    data.slice(a,1);
-    localStorage.setItem("panier", JSON.stringify(data));
-    
-    
- }
-                             
+                       
 
 
 
