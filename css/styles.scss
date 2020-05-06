@@ -9,6 +9,7 @@ $backgroundColorBouton: #C9875B;
         border-radius: 5px;
         margin: 2%;
         background-color: $backgroundColorBouton;
+        
     }
 
 /////////////// FIN VARIABLE GLOBALE ///////////////////
@@ -21,6 +22,7 @@ body {
     width: 98%;
     margin: auto;
     background-color: $backgroundColorBody;
+    border-top: 30px solid red;
 }
 header{
     text-align: center;
@@ -37,6 +39,10 @@ button{
     a{
         text-decoration: none;
         color: black;
+        display: block;
+    }
+    :hover{
+        cursor: pointer;
     }
 }
 
@@ -90,6 +96,7 @@ h1 {
 .lienPageCustomArticle{
     margin-top: 2%;
     padding-left: 10%;
+    text-align: center;
 }
 .lienPageCustomArticle a{
     text-decoration: none;
@@ -106,9 +113,10 @@ h1 {
     text-align: center;
     margin-top: 4%;
 }
-.boutonSubmit{
+.boutonSubmitProduit{
     margin-top: 2%;
-    box-shadow: none;
+      box-shadow: 0 0 0 0;
+    margin-left: 2%;
 }
 
 
@@ -139,6 +147,8 @@ h1 {
 
 .element-lignePanier{
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .element-lignePanier:nth-child(1){
     width: 30%;
@@ -147,6 +157,7 @@ h1 {
 }
 .element-lignePanier:nth-child(1) img{
     width: 98%;
+    border: 1px solid black;
 }
 .element-lignePanier:nth-child(2){
     width: 18%;
@@ -156,7 +167,7 @@ h1 {
 
 }
 .element-lignePanier:nth-child(3){
-    flex-basis: 63%;
+    flex-basis: 75%;
     padding: 1%;
     text-align: justify;
     order: 6;
@@ -181,13 +192,14 @@ h1 {
     order: 5;
 }
 .element-lignePanier:nth-child(7){
-    width: 32%;
+    width: 20%;
     padding: 1%;
     order: 7;
     text-align: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 .sousElement-lignePanier{
     display: flex;
@@ -202,6 +214,11 @@ input:valid {
  box-shadow: 2px 2px 0 0 green;
   box-shadow: 0 0 2px 2px green;
 }
+
+.boutonPanierQuantite{
+    @include classBouton;
+}
+
 #totauxPanier {
     width: 80%;
     margin: auto;
@@ -217,4 +234,95 @@ input:valid {
     display: inline;
     margin-left: 5%;
 }
+
+fieldset{
+    margin-bottom: 20%;
+}
+legend{
+    font-weight: bolder;
+}
+#nom{
+    margin-right: 2%;
+    text-align: center;
+}
+#prenom{
+    text-align: center;
+}
+#adresse{
+    width: 40%;
+    margin-right: 2%;
+    text-align: center;
+}
+#codePostal{
+    width: 9%;
+    margin-right: 2%;
+    text-align: center;
+}
+#ville{
+    text-align: center;
+}
+#email{
+    text-align: center;
+}
 /////////////// END GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+body {
+    width: 90%;
+    margin: auto;
+    border-top: 30px solid green;
+}  
+.element-lignePanier:nth-child(1){
+    order: 1;
+}
+.element-lignePanier:nth-child(2){
+    order: 2;
+}
+.element-lignePanier:nth-child(3){
+    order: 6;
+    flex-basis: 78%
+}
+.element-lignePanier:nth-child(4){
+    order: 3;
+}
+.element-lignePanier:nth-child(5){
+    order: 4;
+}
+.element-lignePanier:nth-child(6){
+    order: 7;
+}
+.element-lignePanier:nth-child(7){
+    order: 5;
+} 
+#codePostal{
+    width: 10%;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+body {
+    border-top: 30px solid blue;
+}   
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+body {
+    border-top: 30px solid orange;
+    width: 70%;
+    margin: auto;
+}     
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+body {
+    border-top: 30px solid pink;
+    width: 60%;
+    margin: auto;
+}
+} 
+
+

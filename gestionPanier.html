@@ -163,22 +163,7 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
             window.location.href = "panier.html";// on revient à la page du produit  */    
 }
     
-if(action == "modificationDelete"){ // modification quantite panier en moins
-var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
-   
-    if(data.length == 1){// on va supprimer le dernier produit
-      localStorage.removeItem("panier");
-      localStorage.setItem("panier", "vide");
-      window.location.href = "panier.html";// on revient à la page d'acceuil */ 
-    }else{
-    data.splice(Id,1); // on supprime l'objet correspondant
-    // Sauvegarde du panier mis à jour
-    localStorage.setItem("panier", JSON.stringify(data));
-    window.location.href = "panier.html";// on revient à la page d'acceuil */ 
-    }
-           
 
-}
 //////////////////////////////////// END //////////////////////////////////////////////////////
     
     

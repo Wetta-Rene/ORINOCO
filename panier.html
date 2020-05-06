@@ -23,21 +23,23 @@
      <article class="elementPanier">
          <fieldset><legend>Pour passer commande</legend>
              <form method="get" action="gestionPanier.html">
-                <p><label for='nom'>Nom:</label>
+                <p>
+                <label for='nom'>Nom:</label>
                 <input type='text' name='nom' id='nom' pattern="^[a-zA-Z]+$" maxlenght='20' placeholder="Entrez votre nom !" required>
-                 </p>
-                <p><label for='prenom'>Prénom:</label>
+                <label for='prenom'>Prénom:</label>
                  <input type='text' name='prenom' id='prenom' pattern="^[a-zA-Z]+$" maxlenght='20' placeholder="Entrez votre prénom !" required>
                  </p>
+                
                 <p>
-                <label for='nom'>Adresse:</label>
+                <label for='adresse'>Adresse:</label>
                 <input type='text' name='adresse' id='adresse' placeholder="Entrez votre adresse complète !" maxlength="60" required>
                 <input type='text' name='codePostal' id='codePostal' pattern="[0-9]{5}" maxlength="5" placeholder="Code postale !" required><input type='text' name='ville' id='ville' pattern="^[a-zA-Z]+$" placeholder="Ville !" maxlength="30" required>
                  </p>
+                 
 
                  <p>
                  <label for='mail'>Email:</label>
-                 <input type='email' name='mail' id='mail' required>
+                 <input type='email' name='mail' id='email' placeholder="Une adresse email !"required>
                  </p>
                  <input type="hidden" name="actionPanier" value="eCommande">
                  <input type='submit' value='Envoyer la commande' id='bouton_envoi'>
@@ -86,11 +88,15 @@ document.getElementById("header").innerHTML = contenuHeader;
                 // variable pour ligne panier supression produit si < 1
                 var signeMoinsPanier = "";
                 if(ligneProduitLocal.quantite > 1){
-                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-1</a></button></div>';
+                    let signe = "plus";
+                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionSetUpPanier('+ligneProduitLocal.reference+','+signe+')">-1</button></div>';
                     //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
                 }else{
-                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationDelete&id='+x+'">Supprimer</a></button></div>';
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionDelete('+x+')">Supprimer</button></div>';
                 }
+           /*<button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-1</button></div>'*/
+            
+                
                 
 let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option:<br />'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+1</a></button></div>'+signeMoinsPanier+'</div></div></article>';  
                            
