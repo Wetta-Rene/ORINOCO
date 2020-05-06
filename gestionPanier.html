@@ -89,6 +89,7 @@ if(action == "ajout"){
             const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
             var Panier = [];
             Panier.push(ligne); // mis dans un tableau pour panier
+            localStorage.setItem("messagePanier", "Produit ajouté !")
             localStorage.setItem("panier", JSON.stringify(Panier));
             window.location.href = retourUrl;// on revient à la page du produit
         }else{ // c'est pas la première fois
@@ -97,7 +98,7 @@ if(action == "ajout"){
                     
             var produitTrouve = false;
             for(let x in data) {
-                 if(data[x].reference == Id && data[x].option == option){
+                 if(data[x].reference == Id){
           
                      produitTrouve = true;
 
@@ -113,6 +114,7 @@ if(action == "ajout"){
             }
 
             // Sauvegarde du panier mis à jour
+            localStorage.setItem("messagePanier", "Quantité modifié !")
             localStorage.setItem("panier", JSON.stringify(data)); 
             window.location.href = retourUrl;// on revient à la page du produit    
 

@@ -11,7 +11,9 @@
 <body>
 <header><img src="images/logoOrinoco.png" ></header>
 <nav id="header"></nav>
-<h1 id="baliseH1"></h1>      
+<h1 id="baliseH1"></h1>  
+<div id="flashMessage">
+</div>
 <section id="resultats">
 </section>
 <script type="text/javascript">
@@ -77,11 +79,14 @@ switch (catalogue){
     };
     xhttp.open("GET", "http://localhost:3000/api/"+catalogue+"/"+idProduit, true);
     xhttp.send();
-
     
-let dataPanier = localStorage.getItem("panier");
+//////////////////////////////////////////////////////////////////////////////////  MESSAGE PANIER
+ let messagePanierVide = localStorage.getItem("messagePanier");
+    document.getElementById("flashMessage").innerHTML = messagePanierVide;
+    
 </script>
 </body>
 <footer>
+    WETTA René - Avril / Mai 2020 - Projet 5 - Développeur Web by OpenClassrooms.
 </footer>
 </html>

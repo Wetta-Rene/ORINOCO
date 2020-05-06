@@ -83,19 +83,19 @@ return affichageCoteBoutonPanier;
 
 
 
-
-
-
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 
 
 
-////////////////////////////////////////// GESTION DU PANIER ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////// GESTION DU PANIER /////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////// SUPPRIMER UN PRODUIT ////////////////////////////////////////////
 let fonctionDelete = function(a){ // supprimer un produit du panier
 var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
     if(data.length == 1){// on va supprimer le dernier produit
         localStorage.removeItem("panier");
         localStorage.setItem("panier", "vide");
+        localStorage.setItem("messagePanier", "Panier vidé !")
         window.location.href = "panier.html";// on revient à la page d'acceuil */ 
     }else{
         data.splice(a,1); // on supprime l'objet correspondant
@@ -104,7 +104,9 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
         window.location.href = "panier.html";// on revient à la page d'acceuil */ 
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////// MODIFICATION QUANTITE ////////////////////////////////////////////
 let fonctionSetupPanier = function(a,b){  // moins ou plus article panier
 var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
 var produitTrouve = false;
@@ -122,4 +124,4 @@ var produitTrouve = false;
     
             window.location.href = "panier.html";// on revient à la page du produit  */ 
 }
-////////////////////////////////////////// GESTION DU PANIER ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////// END GESTION DU PANIER /////////////////////////////////////////////////////////////////////

@@ -39,22 +39,6 @@ document.getElementById("header").innerHTML = contenuHeader;
             var response = JSON.parse(this.responseText);
 
             var Resultats = document.getElementById("resultats"); //affichage dans id > resultats
-            //////////////////// SWITCH TITRE DE LA PAGE EN FONCTION DE LA REQUETTE////////////////
-            /*var contenuH1 = "";
-            switch (catalogue){
-                case "teddies":
-                    contenuH1 = "LES NOUNOURS";
-                     break;
-                    case "cameras":
-                     contenuH1 = "LES CAMERAS VINTAGE";
-                     break;
-                    case "furniture":
-                     contenuH1 = "LES MEUBLES ANCIENS";
-                     break;
-            }
-            console.log(contenuH1)
-            document.getElementById(baliseH1).innerHTML = contenuH1;*/
-      //////////////// END /////////////////
             
             for (var i = 0; i < response.length; i++){
                 var objet = response[i];
@@ -71,13 +55,30 @@ document.getElementById("header").innerHTML = contenuHeader;
     };
     xhttp.open("GET", "http://localhost:3000/api/"+catalogue, true);
     xhttp.send();
-    
 
+
+//////////////////// SWITCH TITRE DE LA PAGE EN FONCTION DE LA REQUETTE////////////////
+            var contenuH1 = "";
+            switch (catalogue){
+                case "teddies":
+                    contenuH1 = "LES NOUNOURS";
+                     break;
+                    case "cameras":
+                     contenuH1 = "LES CAMERAS VINTAGE";
+                     break;
+                    case "furniture":
+                     contenuH1 = "LES MEUBLES ANCIENS";
+                     break;
+            }
+            console.log(contenuH1);
+            document.getElementById(baliseH1).innerHTML = contenuH1;
+////////////////////////////////////////// END ///////////////////////////////////////////
 </script>
 
 
 
 </body>
 <footer>
+    WETTA René - Avril / Mai 2020 - Projet 5 - Développeur Web by OpenClassrooms.
 </footer>
 </html>
