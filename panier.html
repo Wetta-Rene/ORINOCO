@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="css/styles.css" />
-        <script src="https://kit.fontawesome.com/440b1b0c24.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <title>ORINOCO - Panier</title>
-    </head>
+
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script src="https://kit.fontawesome.com/440b1b0c24.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <title>ORINOCO - Panier</title>
+</head>
 
 <body>
-<header><img src="images/logoOrinoco.png" ></header>
-<nav id="header"></nav>
-<h1>Panier</h1> 
-<section id="flashMessage">
-</section>
-<section id="resultatsPanier">
-</section>
-<section id="totauxPanier">
-    <article>
-        <div id="totalArticles"></div>
-        <div id="totalPrix"></div>
-    </article>
-</section>
-<section id="contactPanier">   
-</section>   
-<script>
-////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
-var contenuHeader = fonctionAffichageHeader();
-document.getElementById("header").innerHTML = contenuHeader; 
-///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
-    
-/////////////////  MESSAGE PANIER ////////////////////////
+    <header><img src="images/logoOrinoco.png"></header>
+    <nav id="header"></nav>
+    <h1>Panier</h1>
+    <section id="flashMessage">
+    </section>
+    <section id="resultatsPanier">
+    </section>
+    <section id="totauxPanier">
+        <article>
+            <div id="totalArticles"></div>
+            <div id="totalPrix"></div>
+        </article>
+    </section>
+    <section id="contactPanier">
+    </section>
+    <script>
+        ////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
+        var contenuHeader = fonctionAffichageHeader();
+        document.getElementById("header").innerHTML = contenuHeader;
+        ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
 
- affichageMessageFlash(); // on affiche un message si besoin
+        /////////////////  MESSAGE PANIER ////////////////////////
 
-///////////////////////////////////////////////////////////  
-    
-// -------------------------------------------------------------------------------------------------------------------- //
-///////////////////////////////////////////////////////////  PANIER  /////////////////////////////////////////////////////
-  
-if(JSON.parse(localStorage.getItem("panier") === "vide")){ //panier vide 
-/////////////////////////  MESSAGE PANIER ///////////////////////////////////////////
+        affichageMessageFlash(); // on affiche un message si besoin
 
- affichageMessageFlash(); // on affiche un message si besoin
+        ///////////////////////////////////////////////////////////  
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-    document.getElementById("resultatsPanier").innerHTML = '<div class="messagePanierVide"><p>Oupss, il n\'y a rien dans le panier... </p><p><a href="index.html"> Allez voir notre catalogue ! </a></p><p><i class="fas fa-arrow-alt-circle-down"></i></p></div>'; 
-    document.getElementById("contactPanier").innerHTML = '<article class="messagePanierVide"><a href="index.html"><i class="far fa-folder-open"></i></a></article>';
-        
-   
-}else{ // panier pas vide
-    var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+        // -------------------------------------------------------------------------------------------------------------------- //
+        ///////////////////////////////////////////////////////////  PANIER  /////////////////////////////////////////////////////
 
-        for(let x in produitsLocal) { // on balaye le contenu du panier
-            var ligneProduitLocal = produitsLocal[x];  //>> recherche  ligneProduitLocal.nom
-              
+        if (JSON.parse(localStorage.getItem("panier") === "vide")) { //panier vide 
+            /////////////////////////  MESSAGE PANIER ///////////////////////////////////////////
+
+            affichageMessageFlash(); // on affiche un message si besoin
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+            document.getElementById("resultatsPanier").innerHTML = '<div class="messagePanierVide"><p>Oupss, il n\'y a rien dans le panier... </p><p><a href="index.html"> Allez voir notre catalogue ! </a></p><p><i class="fas fa-arrow-alt-circle-down"></i></p></div>';
+            document.getElementById("contactPanier").innerHTML = '<article class="messagePanierVide"><a href="index.html"><i class="far fa-folder-open"></i></a></article>';
+
+
+        } else { // panier pas vide
+            var produitsLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+
+            for (let x in produitsLocal) { // on balaye le contenu du panier
+                var ligneProduitLocal = produitsLocal[x]; //>> recherche  ligneProduitLocal.nom
+
                 // variation quantite - ou supprimer a l'affichage
-            var signeMoinsPanier = "";
-                if(ligneProduitLocal.quantite > 1){
+                var signeMoinsPanier = "";
+                if (ligneProduitLocal.quantite > 1) {
                     let signe = "plus";
-                    signeMoinsPanier =  '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionSetUpPanier('+ligneProduitLocal.reference+','+signe+')">-1</button></div>';
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionSetUpPanier(' + ligneProduitLocal.reference + ',' + signe + ')">-1</button></div>';
                     //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
-                }else{
-                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionDelete('+x+')">Supprimer</button></div>';
-                } 
-            
+                } else {
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionDelete(' + x + ')">Supprimer</button></div>';
+                }
+
                 // creation ligne produit
-                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="'+ligneProduitLocal.urlImage+'" title="'+ligneProduitLocal.reference+'"></div><div class="element-lignePanier">'+ligneProduitLocal.nom+'<br/><br/>Option: <br/>'+ligneProduitLocal.option+'</div><div class="element-lignePanier">'+ligneProduitLocal.description+'</div><div class="element-lignePanier">Prix U:<br/>'+ligneProduitLocal.prixUnitaire+'</div><div class="element-lignePanier">Qté:<br/>'+ligneProduitLocal.quantite+'</div><div class="element-lignePanier">Prix total:<br/>'+ligneProduitLocal.prixAjour+'</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id='+ligneProduitLocal.reference+'">+1</a></button></div>'+signeMoinsPanier+'</div></div></article>';  
-  
+                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="' + ligneProduitLocal.urlImage + '" title="' + ligneProduitLocal.reference + '"></div><div class="element-lignePanier">' + ligneProduitLocal.nom + '<br/><br/>Option: <br/>' + ligneProduitLocal.option + '</div><div class="element-lignePanier">' + ligneProduitLocal.description + '</div><div class="element-lignePanier">Prix U:<br/>' + ligneProduitLocal.prixUnitaire + '</div><div class="element-lignePanier">Qté:<br/>' + ligneProduitLocal.quantite + '</div><div class="element-lignePanier">Prix total:<br/>' + ligneProduitLocal.prixAjour + '</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id=' + ligneProduitLocal.reference + '">+1</a></button></div>' + signeMoinsPanier + '</div></div></article>';
+
                 //affichage du panier sur le html
-                document.getElementById("resultatsPanier").innerHTML += ligne;                     
-            }// fin for produilocal
-    
-    
-    //
-    const totalDesArticlesDuPanier = functionCalculArticlesDuPanier();// on fait le calcul des articles
-        ///// articles au pluriel ou pas //////////////////
-        if(totalDesArticlesDuPanier > 1){// mettre S a article ou pas
-             plurielArticleBoutonPanier = "articles";
-        }else{
-            plurielArticleBoutonPanier = "article";
-        }
-        document.getElementById("totalArticles").innerHTML = 'Nombre d\''+plurielArticleBoutonPanier+': '+totalDesArticlesDuPanier;  
-    
-    const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
-        document.getElementById("totalPrix").innerHTML = 'Prix total TTC: '+prixTotalDuPanier;
-    ///////////////////////////////////////////////////// END SOUS PARTIE PANIER /////////////////////////////////////////////////////////////////////////
+                document.getElementById("resultatsPanier").innerHTML += ligne;
+            } // fin for produilocal
 
-    
-    //////////////////////////////////////////////////// PARTIE COMMANDE/CONTACT //////////////////////////////////////////////////////////////
-    let partieContact = ' <article class="elementPanier"><fieldset><legend>Pour passer commande</legend><form method="get" action="gestionPanier.html"><p><label for="nom">Nom:</label><input type="text" name="nom" id="nom" pattern="^[a-zA-Z]+$" maxlenght="20" placeholder="Entrez votre nom !" required><label for="prenom">Prénom:</label><input type="text" name="prenom" id="prenom" pattern="^[a-zA-Z]+$" maxlenght="20" placeholder="Entrez votre prénom !" required></p><p><label for="adresse">Adresse:</label><input type="text" name="adresse" id="adresse" placeholder="Entrez votre adresse complète !" maxlength="60" required><input type="text" name="codePostal" id="codePostal" pattern="[0-9]{5}" maxlength="5" placeholder="Code postale !" required><input type="text" name="ville" id="ville" pattern="^[a-zA-Z]+$" placeholder="Ville !" maxlength="30" required></p><p><label for="mail">Email:</label><input type="email" name="mail" id="email" placeholder="Une adresse email !"required></p><input type="hidden" name="actionPanier" value="eCommande"><input type="submit" value="Envoyer la commande" id="bouton_envoi"></form></fieldset></article>';
-    document.getElementById("contactPanier").innerHTML = partieContact;
- 
-}// FIN DU ELSE PANIER VIDE
 
-//////////////////////////////////////////// FIN DU PANIER PLEIN ////////////////////////////////////////
-</script>
+            //
+            const totalDesArticlesDuPanier = functionCalculArticlesDuPanier(); // on fait le calcul des articles
+            ///// articles au pluriel ou pas //////////////////
+            if (totalDesArticlesDuPanier > 1) { // mettre S a article ou pas
+                plurielArticleBoutonPanier = "articles";
+            } else {
+                plurielArticleBoutonPanier = "article";
+            }
+            document.getElementById("totalArticles").innerHTML = 'Nombre d\'' + plurielArticleBoutonPanier + ': ' + totalDesArticlesDuPanier;
+
+            const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
+            document.getElementById("totalPrix").innerHTML = 'Prix total TTC: ' + prixTotalDuPanier;
+            ///////////////////////////////////////////////////// END SOUS PARTIE PANIER /////////////////////////////////////////////////////////////////////////
+
+
+            //////////////////////////////////////////////////// PARTIE COMMANDE/CONTACT //////////////////////////////////////////////////////////////
+            let partieContact = ' <article class="elementPanier"><fieldset><legend>Pour passer commande</legend><form method="get" action="gestionPanier.html"><p><label for="nom">Nom:</label><input type="text" name="nom" id="nom" pattern="^[a-zA-Z]+$" maxlenght="20" placeholder="Entrez votre nom !" required><label for="prenom">Prénom:</label><input type="text" name="prenom" id="prenom" pattern="^[a-zA-ZÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ]+$" maxlenght="20" placeholder="Entrez votre prénom !" required></p><p><label for="adresse">Adresse:</label><input type="text" name="adresse" id="adresse" placeholder="Entrez votre adresse complète !" maxlength="60" pattern="([0-9a-zàâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})" required><input type="text" name="codePostal" id="codePostal" pattern="[0-9]{5}" maxlength="5" placeholder="Code postale !" required><input type="text" name="ville" id="ville" pattern="^[a-zA-Z]+$" placeholder="Ville !" maxlength="30" required></p><p><label for="mail">Email:</label><input type="email" name="mail" id="email" placeholder="Une adresse email !"required></p><input type="hidden" name="actionPanier" value="eCommande"><input type="submit" value="Envoyer la commande" id="bouton_envoi"></form></fieldset></article>';
+            document.getElementById("contactPanier").innerHTML = partieContact;
+
+        } // FIN DU ELSE PANIER VIDE
+
+        //////////////////////////////////////////// FIN DU PANIER PLEIN ////////////////////////////////////////
+    </script>
 
 
 </body>
 <footer>
 </footer>
+
 </html>

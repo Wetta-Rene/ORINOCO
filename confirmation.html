@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="css/styles.css" />
-        <script src="js/scripts.js"></script>
-        <title>ORINOCO - Accueil Catalogue</title>
-   </head>
+
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js"></script>
+    <title>ORINOCO - Accueil Catalogue</title>
+</head>
 
 <body>
-<header><img src="images/logoOrinoco.png" ></header>
-<nav id="header">
-    <div id="messagePanier"></div>
-</nav>
-<h1 id="baliseH1"></h1>      
-<section id="resultats">
- 
-</section>
-<script>
-////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
-var contenuHeader = fonctionAffichageHeader();
-document.getElementById("header").innerHTML = contenuHeader; 
-///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
+    <header><img src="images/logoOrinoco.png"></header>
+    <nav id="header">
+        <div id="messagePanier"></div>
+    </nav>
+    <h1 id="baliseH1"></h1>
+    <section id="resultats">
 
-///////////////////////////////////////////////////////////////  MESSAGE PANIER ///////////////////////////////////////////////
+    </section>
+    <script>
+        ////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
+        var contenuHeader = fonctionAffichageHeader();
+        document.getElementById("header").innerHTML = contenuHeader;
+        ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
 
- affichageMessageFlash(); // on affiche un message si besoin
+        ///////////////////////////////////////////////////////////////  MESSAGE PANIER ///////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-</script>
+        affichageMessageFlash(); // on affiche un message si besoin
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    </script>
 
 
 
@@ -36,4 +37,5 @@ document.getElementById("header").innerHTML = contenuHeader;
 <footer>
     WETTA René - Avril / Mai 2020 - Projet 5 - Développeur Web by OpenClassrooms.
 </footer>
+
 </html>
