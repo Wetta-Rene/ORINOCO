@@ -89,7 +89,7 @@ if(action == "ajout"){
             const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
             var Panier = [];
             Panier.push(ligne); // mis dans un tableau pour panier
-            localStorage.setItem("messagePanier", "Produit ajouté !")
+            localStorage.messagePanier =  "Produit ajouté !";
             localStorage.setItem("panier", JSON.stringify(Panier));
             window.location.href = retourUrl;// on revient à la page du produit
         }else{ // c'est pas la première fois
@@ -114,7 +114,7 @@ if(action == "ajout"){
             }
 
             // Sauvegarde du panier mis à jour
-            localStorage.setItem("messagePanier", "Quantité modifié !")
+            localStorage.messagePanier =  "Produit ajouté !";
             localStorage.setItem("panier", JSON.stringify(data)); 
             window.location.href = retourUrl;// on revient à la page du produit    
 
@@ -143,6 +143,7 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
                      data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
                  }
             }
+            localStorage.messagePanier = "Quantité mise à jour !";
             // Sauvegarde du panier mis à jour
             localStorage.setItem("panier", JSON.stringify(data));
             window.location.href = "panier.html";// on revient à la page du produit  */    
@@ -159,9 +160,9 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
                      data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
                  }
             }
+            localStorage.messagePanier = "Quantité mise à jour !";
             // Sauvegarde du panier mis à jour
             localStorage.setItem("panier", JSON.stringify(data));
-    
             window.location.href = "panier.html";// on revient à la page du produit  */    
 }
     

@@ -124,7 +124,7 @@ footer{
     margin-bottom: 2%;
     font-size: 0.7em;
 }
-#flashMessage{
+#textFlashMessage{
     width: 20%;
     margin: auto;
     border-radius: 5px;
@@ -136,6 +136,7 @@ footer{
     animation-delay: 1000ms;
     animation-name: magic;
     animation-duration: 3000ms;
+    animation-fill-mode: forwards;
     margin-bottom: 2%;
 }
 

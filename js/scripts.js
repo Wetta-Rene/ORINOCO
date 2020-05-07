@@ -1,7 +1,9 @@
 /////////////////////////////// INITIALISATION D'UN PANIER    //////////////////////////////////////////////
-    if (localStorage.getItem("panier") == null) {
-    localStorage.setItem("panier", "vide");
-    }
+if (localStorage.getItem("panier") == null) {
+localStorage.setItem("panier", "vide");
+localStorage.setItem("messagePanier", "vide");
+}
+
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 
 ///////////////////// FONCTIN CALCUL DES ARTICLES DU PANIER ////////////////////////////
@@ -89,13 +91,22 @@ return affichageCoteBoutonPanier;
 
 //////////////////////////////////////////////////////////////// GESTION DU PANIER /////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////// MESSAGE FLASH UTILISATEUR  //////////////////////////////////////////////////
+var affichageMessageFlash = function(){
+   let message = localStorage.messagePanier;
+    if(message != "vide"){
+    let affichageMessageFlash = '<div id="textFlashMessage">'+message+'</div>';
+    document.getElementById("flashMessage").innerHTML = '<div id="textFlashMessage">'+message+'</div>';
+    }
+    localStorage.messagePanier = "vide"; // on remet vide en cas de rechargement de la page
+}
+
 //////////////////////////////////////////// SUPPRIMER UN PRODUIT ////////////////////////////////////////////
 let fonctionDelete = function(a){ // supprimer un produit du panier
 var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
+localStorage.messagePanier = "Produit supprimer !"; // message utilisateur
     if(data.length == 1){// on va supprimer le dernier produit
-        localStorage.removeItem("panier");
-        localStorage.setItem("panier", "vide");
-        localStorage.setItem("messagePanier", "Panier vidé !")
         window.location.href = "panier.html";// on revient à la page d'acceuil */ 
     }else{
         data.splice(a,1); // on supprime l'objet correspondant

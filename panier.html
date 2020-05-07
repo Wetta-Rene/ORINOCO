@@ -12,8 +12,8 @@
 <header><img src="images/logoOrinoco.png" ></header>
 <nav id="header"></nav>
 <h1 id="baliseH1"></h1> 
-<div id="flashMessage">
-</div>
+<section id="flashMessage">
+</section>
 <section id="resultatsPanier">
 </section>
 <section id="totauxPanier">
@@ -33,7 +33,11 @@ var contenuHeader = fonctionAffichageHeader();
 document.getElementById("header").innerHTML = contenuHeader; 
 ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
     
-    
+///////////////////////////////////////////////////////////////  MESSAGE PANIER ///////////////////////////////////////////
+
+ affichageMessageFlash(); // on affiche un message si besoin
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
     
  ///////partie contact
 
@@ -46,6 +50,7 @@ document.getElementById("header").innerHTML = contenuHeader;
 if(JSON.parse(localStorage.getItem("panier") === "vide")){ //panier vide ou inexistant
     document.getElementById("resultatsPanier").innerHTML = '<div class="messagePanierVide"><p>Oupss, il n\'y a rien dans le panier... </p><p><a href="index.html"> Allez voir notre catalogue ! </a></p><p><i class="fas fa-arrow-alt-circle-down"></i></p></div>'; 
     document.getElementById("contactPanier").innerHTML = '<article class="messagePanierVide"><a href="index.html"><i class="far fa-folder-open"></i></a></article>';
+        
     
     let messagePanierVide = localStorage.getItem("messagePanier");
     document.getElementById("flashMessage").innerHTML = messagePanierVide;
@@ -88,10 +93,7 @@ let partieContact = ' <article class="elementPanier"><fieldset><legend>Pour pass
     
     
     
-  let messagePanier = localStorage.getItem("messagePanier");
-    document.getElementById("flashMessage").innerHTML = messagePanier;
-    
-    
+
     
     
     

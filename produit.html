@@ -12,8 +12,8 @@
 <header><img src="images/logoOrinoco.png" ></header>
 <nav id="header"></nav>
 <h1 id="baliseH1"></h1>  
-<div id="flashMessage">
-</div>
+<section id="flashMessage">
+</section>
 <section id="resultats">
 </section>
 <script type="text/javascript">
@@ -21,6 +21,12 @@
 var contenuHeader = fonctionAffichageHeader();
 document.getElementById("header").innerHTML = contenuHeader; 
 ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////  MESSAGE PANIER ///////////////////////////////////////////////
+
+ affichageMessageFlash(); // on affiche un message si besoin
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 // quelque variables utiles pour la formation de la page html
 const urlComplete = window.location.href; //recupere l'url
@@ -80,10 +86,9 @@ switch (catalogue){
     xhttp.open("GET", "http://localhost:3000/api/"+catalogue+"/"+idProduit, true);
     xhttp.send();
     
-//////////////////////////////////////////////////////////////////////////////////  MESSAGE PANIER
- let messagePanierVide = localStorage.getItem("messagePanier");
-    document.getElementById("flashMessage").innerHTML = messagePanierVide;
+
     
+
 </script>
 </body>
 <footer>
