@@ -105,13 +105,15 @@ var affichageMessageFlash = function(){
 //////////////////////////////////////////// SUPPRIMER UN PRODUIT ////////////////////////////////////////////
 let fonctionDelete = function(a){ // supprimer un produit du panier
 var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
-localStorage.messagePanier = "Produit supprimer !"; // message utilisateur
     if(data.length == 1){// on va supprimer le dernier produit
+        localStorage.removeItem("panier");
+        localStorage.setItem("panier", "vide");
+        localStorage.setItem("messagePanier", "Panier vidé !")
         window.location.href = "panier.html";// on revient à la page d'acceuil */ 
     }else{
+        localStorage.messagePanier = "Produit supprimé !"; // message utilisateur
         data.splice(a,1); // on supprime l'objet correspondant
-        // Sauvegarde du panier mis à jour
-        localStorage.setItem("panier", JSON.stringify(data));
+        localStorage.setItem("panier", JSON.stringify(data));// Sauvegarde du panier mis à jour
         window.location.href = "panier.html";// on revient à la page d'acceuil */ 
     }
 }
