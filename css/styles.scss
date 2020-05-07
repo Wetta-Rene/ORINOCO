@@ -230,18 +230,21 @@ footer{
     display: flex;
     
 }
-input:invalid {
+
+.decoInputContact:invalid {
  box-shadow: 2px 2px 0 0 red;
   box-shadow: 0 0 2px 2px red;
 }
 
-input:valid {
+.decoInputContact:valid {
  box-shadow: 2px 2px 0 0 green;
   box-shadow: 0 0 2px 2px green;
 }
 
 .boutonPanierQuantite{
     @include classBouton;
+    height: 4em;
+    padding: %;
 }
 
 #totauxPanier {
@@ -287,33 +290,49 @@ input:valid {
 
 fieldset{
     margin-bottom: 20%;
+    border: 2px solid black;
 }
 legend{
     font-weight: bolder;
 }
-#nom{
-    margin-right: 1%;
-    text-align: center;
+
+#idFormContact{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
 }
-#prenom{
+#idFormContact label{
+    margin-left: 2%;
+}
+.element-form{
+    display: flex;
+    margin-bottom: 2%;
+}
+#inputContact{
+    width: 100%;
     text-align: center;
-    width: 32%;
+    margin-top: 2%;
+}
+.element-form:nth-child(1),.element-form:nth-child(3),.element-form:nth-child(5),.element-form:nth-child(7),.element-form:nth-child(9),.element-form:nth-child(11){
+    font-weight: bolder;
+    flex-basis: 20%; 
+}
+.element-form:nth-child(2),.element-form:nth-child(4),.element-form:nth-child(6),.element-form:nth-child(8),.element-form:nth-child(10),.element-form:nth-child(12),{
+    font-weight: bolder;
+    flex-basis: 80%; 
 }
 #adresse{
-    width: 40%;
-    margin-right: 2%;
-    text-align: center;
-}
-#codePostal{
-    width: 9%;
-    margin-right: 2%;
-    text-align: center;
-}
-#ville{
-    text-align: center;
+    width: 150%; 
 }
 #email{
-    text-align: center;
+    width: 150%;
+}
+#important{
+    color: red;
+    font-size: 0.8em;
 }
 /////////////// END GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
 
@@ -349,16 +368,17 @@ footer{
 .element-lignePanier:nth-child(7){
     order: 5;
 } 
-#codePostal{
-    width: 10%;
-}
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 body {
     border-top: 30px solid blue;
-}   
+}
+#idFormContact{
+    width: 80%;
+}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -367,6 +387,9 @@ body {
     border-top: 30px solid orange;
     width: 70%;
     margin: auto;
+}
+#idFormContact{
+    width: 70%;
 }
 footer{
     font-size: 1em;
