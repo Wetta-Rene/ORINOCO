@@ -170,7 +170,7 @@ var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier 
 //////////////////////////////////// END //////////////////////////////////////////////////////
     
     
-//////////////////////////////////// AUTRE //////////////////////////////////////////////////////
+//////////////////////////////////// COMMANDE //////////////////////////////////////////////////////
     
 if(action == "eCommande"){
   
@@ -211,10 +211,11 @@ const utilisateur = new formatUtilisateur(nom, prenom, adresse, mail);
     products.push(commande)
     console.log(products)
     console.log(JSON.stringify(products))
-/*var request = new XMLHttpRequest();
-request.open("POST", "http://localhost:3000/api/teddies/order);
+    
+var request = new XMLHttpRequest();
+request.open("POST", "http://localhost:3000/api/teddies/order");
 request.setRequestHeader("Content-Type", "application/json");
-request.send(JSON.stringify(products));*/
+request.send(JSON.stringify(products));
     
 }
 //////////////////////////////////// END //////////////////////////////////////////////////////
