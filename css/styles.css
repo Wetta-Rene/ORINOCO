@@ -125,7 +125,7 @@ footer {
 
 /* line 142, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #textFlashMessage {
-  width: 40%;
+  width: 30%;
   margin: auto;
   border-radius: 5px;
   text-align: center;
@@ -396,37 +396,46 @@ legend {
     order: 5; }
   /* line 429, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #totauxPanier {
-    font-size: 1em; } }
+    font-size: 1em; }
+  /* line 432, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  #textFlashMessage {
+    width: 22%; } }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  /* line 436, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 439, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   body {
     border-top: 30px solid blue; }
-  /* line 440, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 443, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #idFormContact {
-    width: 80%; } }
+    width: 80%; }
+  /* line 446, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  #textFlashMessage {
+    width: 16%; } }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  /* line 447, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 453, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   body {
     border-top: 30px solid orange;
     width: 70%;
     margin: auto; }
-  /* line 453, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 459, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #idFormContact {
     width: 70%; }
-  /* line 457, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 463, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   footer {
     font-size: 1em; } }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  /* line 464, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 470, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   body {
     border-top: 30px solid pink;
     width: 70%;
-    margin: auto; } }
+    margin: auto; }
+  /* line 475, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  #textFlashMessage {
+    width: 13%; } }
 
 /*# sourceMappingURL=styles.css.map */

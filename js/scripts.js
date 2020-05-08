@@ -103,12 +103,8 @@ let fonctionDelete = function (a) { // supprimer un produit du panier
 //////////////////////////// MODIFICATION QUANTITE PLUS////////////////////////////////////////////
 
 var fonctionQuantitePlus = function(a) {
-    var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
+    var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
 
-    console.log(data.length)
-    for( let x in data){
-        console.log(data[x])
-    }
     // Sauvegarde du panier mis à jour
     //localStorage.setItem("panier", JSON.stringify(data));
     //window.location.href = "panier.html"; // on revient à la page du panier    
@@ -133,3 +129,37 @@ var fonctionQuantiteMoins = function(a) {
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////// END GESTION DU PANIER /////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

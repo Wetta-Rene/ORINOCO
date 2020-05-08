@@ -140,7 +140,7 @@ footer {
 }
 
 #textFlashMessage {
-    width: 40%;
+    width: 30%;
     margin: auto;
     border-radius: 5px;
     text-align: center;
@@ -429,6 +429,9 @@ legend {
     #totauxPanier {
         font-size: 1em;
     }
+#textFlashMessage {
+    width: 22%;
+}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -440,6 +443,9 @@ legend {
     #idFormContact {
         width: 80%;
     }
+#textFlashMessage {
+    width: 16%;
+}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -466,4 +472,7 @@ legend {
         width: 70%;
         margin: auto;
     }
+    #textFlashMessage {
+    width: 13%;
+}
 }
