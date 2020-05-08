@@ -11,10 +11,10 @@
 
 <body>
     <header><img src="images/logoOrinoco.png"></header>
-    <nav id="header">
-        <div id="messagePanier"></div>
-    </nav>
+    <nav id="header"></nav>
     <h1 id="baliseH1"></h1>
+    <section id="flashMessage">
+    </section>
     <section id="resultats">
 
     </section>
@@ -23,7 +23,11 @@
         var contenuHeader = fonctionAffichageHeader();
         document.getElementById("header").innerHTML = contenuHeader;
         ///////////////////////////////////////////////////////////  END /////////////////////////////////////////////////////////////////
+        /////////////////  MESSAGE PANIER ////////////////////////
 
+        affichageMessageFlash(); // on affiche un message si besoin
+
+        /////////////////////////////////////////////////////////// 
         /*nettoyage du div en cas de remplissage avant*/
         document.getElementById("resultats").innerHTML = "";
 

@@ -37,9 +37,9 @@ var functionCalculPrixTotalDuPanier = function () {
 
 ///////////////////////////////   AFFICHAGE DU HEADER DES PAGES DU SITE    //////////////////////////////////////////////
 var fonctionAffichageHeader = function () {
-    let affichageCoteBoutonPanier = null;
+    let contenuHeader = null;
     if (localStorage.getItem("panier") === "vide") { // panier vide
-        affichageCoteBoutonPanier = '<button class="bouton"><a href="index.html">Accueil / Catalogue</a></button><button class="bouton"><a href="panier.html" title="0.00€">Panier (0 article)</a></button>';
+        contenuHeader = '<button class="bouton"><a href="index.html">Accueil / Catalogue</a></button><button class="bouton"><a href="panier.html" title="0.00€">Panier (0 article)</a></button>';
     } else {
         const totalDesArticlesDuPanier = functionCalculArticlesDuPanier(); // on fait le calcul des articles
         const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
@@ -50,10 +50,10 @@ var fonctionAffichageHeader = function () {
             plurielArticleBoutonPanier = "article";
         }
 
-        affichageCoteBoutonPanier = '<button><a href="index.html">Accueil / Catalogue</a></button><button><a href="panier.html" title="' + prixTotalDuPanier + '€">Panier (' + totalDesArticlesDuPanier + ' ' + plurielArticleBoutonPanier + ')</a></button>';
+        contenuHeader = '<button><a href="index.html">Accueil / Catalogue</a></button><button><a href="panier.html" title="' + prixTotalDuPanier + '€">Panier (' + totalDesArticlesDuPanier + ' ' + plurielArticleBoutonPanier + ')</a></button><button onclick="fonctionClearPanier()">Vider le panier</button>';
     }
 
-    return affichageCoteBoutonPanier;
+    return contenuHeader;
 }
 
 //////////////////////////////////////////////  END    ////////////////////////////////////////////////////
@@ -128,6 +128,14 @@ var fonctionQuantiteMoins = function(a) {
     window.location.href = "panier.html"; // on revient à la page du panier    
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
+//////////////////////////// VIDER LE PANIER PAR BOUTON DU HEADER ////////////////////////////////////////////
+
+var fonctionClearPanier = function(){
+    localStorage.panier = "vide"; // on met la valeur de panier a vide
+    localStorage.messagePanier = "Panier vidé !";
+    window.location.href = "index.html"; //et on va page accueil
+}
+
 //////////////////////////////////////////////////////////////// END GESTION DU PANIER /////////////////////////////////////////////////////////////////////
 
 
