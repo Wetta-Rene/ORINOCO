@@ -1,49 +1,55 @@
-
 /////////////// VARIABLES GLOBALES ///////////////////
 $backgroundColorBody: #F6ECFD;
 $backgroundColorProduit: #B184B5;
 $backgroundColorBouton: #C9875B;
 
-@mixin classBouton{
-        border: 2px solid black;
-        border-radius: 5px;
-        margin: 2%;
-        background-color: $backgroundColorBouton;
-    :hover{
+@mixin classBouton {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 2%;
+    background-color: $backgroundColorBouton;
+
+    :hover {
         cursor: pointer;
     }
-    }
+}
 
 /////////////// FIN VARIABLE GLOBALE ///////////////////
 
 /////////////// PAGES INDEX ET PRODUIT ///////////////////
-html{
+html {
     background-color: $backgroundColorBody;
 }
+
 body {
     width: 98%;
     margin: auto;
     background-color: $backgroundColorBody;
     border-top: 30px solid red;
 }
-header{
+
+header {
     text-align: center;
     padding: 2%;
     background-color: #F6ECFD;
 }
-nav{
+
+nav {
     text-align: center;
     margin-bottom: 2%;
     margin-top: 2%;
 }
-button{
-     @include classBouton;
-    a{
+
+button {
+    @include classBouton;
+
+    a {
         text-decoration: none;
         color: black;
         display: block;
     }
-    :hover{
+
+    :hover {
         cursor: pointer;
     }
 }
@@ -72,13 +78,16 @@ button{
 .elementContainerArticle {
     display: flex;
 }
-.elementContainerArticle:nth-child(1){
+
+.elementContainerArticle:nth-child(1) {
     flex-basis: 30%;
 }
-.elementContainerArticle:nth-child(1) img{
+
+.elementContainerArticle:nth-child(1) img {
     width: 100%;
 }
-.elementContainerArticle:nth-child(2){
+
+.elementContainerArticle:nth-child(2) {
     flex-basis: 70%;
 }
 
@@ -95,38 +104,42 @@ h1 {
     text-align: center;
 }
 
-.lienPageCustomArticle{
+.lienPageCustomArticle {
     margin-top: 2%;
     padding-left: 10%;
     text-align: center;
 }
-.lienPageCustomArticle a{
+
+.lienPageCustomArticle a {
     text-decoration: none;
     cursor: pointer;
     font-weight: bolder;
 }
 
-.divPrix{
+.divPrix {
     margin-top: 2%;
     text-align: right;
 }
 
-#selectOptionProduit{
+#selectOptionProduit {
     text-align: center;
     margin-top: 4%;
 }
-.boutonSubmitProduit{
+
+.boutonSubmitProduit {
     margin-top: 2%;
-      box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0 0;
     margin-left: 2%;
 }
-footer{
+
+footer {
     text-align: center;
     margin-top: 6%;
     margin-bottom: 2%;
     font-size: 0.7em;
 }
-#textFlashMessage{
+
+#textFlashMessage {
     width: 20%;
     margin: auto;
     border-radius: 5px;
@@ -143,26 +156,27 @@ footer{
 }
 
 @keyframes magic {
-  0% {opacity: 1; }
-  100% {opacity: 0; }
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
-
-
-
-
-
-
 
 /////////////// GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
-#resultatsPanier{
+#resultatsPanier {
     margin-bottom: 2%;
 }
-.ContenairePanier{
+
+.ContenairePanier {
     width: 98%;
     margin: auto;
     margin-bottom: 2%;
 }
-.contenaireLignePanier{
+
+.contenaireLignePanier {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -170,53 +184,61 @@ footer{
     background-color: $backgroundColorProduit;
 }
 
-.element-lignePanier{
+.element-lignePanier {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.element-lignePanier:nth-child(1){
+
+.element-lignePanier:nth-child(1) {
     width: 30%;
     padding: 1%;
     order: 1;
 }
-.element-lignePanier:nth-child(1) img{
+
+.element-lignePanier:nth-child(1) img {
     width: 98%;
     border: 1px solid black;
 }
-.element-lignePanier:nth-child(2){
+
+.element-lignePanier:nth-child(2) {
     width: 18%;
     padding: 1%;
-   text-align: center;
+    text-align: center;
     order: 2;
 
 }
-.element-lignePanier:nth-child(3){
+
+.element-lignePanier:nth-child(3) {
     flex-basis: 75%;
     padding: 1%;
     text-align: justify;
     order: 6;
 
 }
-.element-lignePanier:nth-child(4){
+
+.element-lignePanier:nth-child(4) {
     padding: 1%;
     width: 14%;
     text-align: center;
     order: 3;
 }
-.element-lignePanier:nth-child(5){
+
+.element-lignePanier:nth-child(5) {
     width: 8%;
     text-align: center;
     padding: 1%;
     order: 4;
 }
-.element-lignePanier:nth-child(6){
+
+.element-lignePanier:nth-child(6) {
     flex-basis: 18%;
     text-align: center;
     padding: 1%;
     order: 5;
 }
-.element-lignePanier:nth-child(7){
+
+.element-lignePanier:nth-child(7) {
     width: 20%;
     padding: 1%;
     order: 7;
@@ -226,181 +248,223 @@ footer{
     justify-content: space-around;
     align-items: center;
 }
-.sousElement-lignePanier{
+
+.sousElement-lignePanier {
     display: flex;
-    
+
 }
 
-.decoInputContact:invalid {
- box-shadow: 2px 2px 0 0 red;
-  box-shadow: 0 0 2px 2px red;
+.decoInputContact {
+    :focus {
+        :invalid {
+            box-shadow: 2px 2px 0 0 red;
+            box-shadow: 0 0 2px 2px red;
+        }
+
+        :valid {
+            box-shadow: 2px 2px 0 0 green;
+            box-shadow: 0 0 2px 2px green;
+        }
+    }
 }
 
-.decoInputContact:valid {
- box-shadow: 2px 2px 0 0 green;
-  box-shadow: 0 0 2px 2px green;
-}
+    .boutonPanierQuantite {
+        @include classBouton;
+        height: 4em;
+    }
 
-.boutonPanierQuantite{
-    @include classBouton;
-    height: 4em;
-    padding: %;
-}
+    #totauxPanier {
+        width: 90%;
+        margin: auto;
+        margin-top: 4%;
+        margin-bottom: 4%;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 0.9em;
+    }
 
-#totauxPanier {
-    width: 90%;
-    margin: auto;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 0.9em;
-}
+    .messagePanierVide {
+        font-weight: bolder;
+        text-align: center;
+        font-size: 1.2em;
+    }
 
-.messagePanierVide{
-    font-weight: bolder;
-    text-align: center;
-    font-size: 1.2em;
-}
-.messagePanierVide a{
+    .messagePanierVide a {
         text-decoration: none;
         color: black;
         transition: 400ms;
     }
-.messagePanierVide a:hover{
+
+    .messagePanierVide a:hover {
         color: #B184B5;
     }
-.fas, .far{
-    color: saddlebrown;
-    font-size: 3em;
-    margin-top: 2%;
-    transition-duration: 400ms;
-}
-.far:hover{
-    color: #B184B5;
-    font-size: 4em;
-    cursor: pointer;
-}
 
-fieldset{
-    margin-bottom: 20%;
-    border: 2px solid black;
-}
-legend{
-    font-weight: bolder;
-}
+    .fas,
+    .far {
+        color: saddlebrown;
+        font-size: 3em;
+        margin-top: 2%;
+        transition-duration: 400ms;
+    }
 
-#idFormContact{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: auto;
-    margin-top: 2%;
-}
-#idFormContact label{
-    margin-left: 2%;
-}
-.element-form{
-    display: flex;
-    margin-bottom: 2%;
-}
-#inputContact{
-    width: 100%;
-    text-align: center;
-    margin-top: 2%;
-}
-.element-form:nth-child(1),.element-form:nth-child(3),.element-form:nth-child(5),.element-form:nth-child(7),.element-form:nth-child(9),.element-form:nth-child(11){
-    font-weight: bolder;
-    flex-basis: 20%; 
-}
-.element-form:nth-child(2),.element-form:nth-child(4),.element-form:nth-child(6),.element-form:nth-child(8),.element-form:nth-child(10),.element-form:nth-child(12),{
-    font-weight: bolder;
-    flex-basis: 80%; 
-}
-#adresse{
-    width: 150%; 
-}
-#email{
-    width: 150%;
-}
-#important{
-    color: red;
-    font-size: 0.8em;
-}
+    .far:hover {
+        color: #B184B5;
+        font-size: 4em;
+        cursor: pointer;
+    }
+
+    fieldset {
+        margin-bottom: 20%;
+        border: 2px solid black;
+    }
+
+    legend {
+        font-weight: bolder;
+    }
+
+    #idFormContact {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: auto;
+        margin-top: 2%;
+    }
+
+    #idFormContact label {
+        margin-left: 2%;
+    }
+
+    .element-form {
+        display: flex;
+        margin-bottom: 2%;
+    }
+
+    #inputContact {
+        width: 100%;
+        text-align: center;
+        margin-top: 2%;
+    }
+
+    .element-form:nth-child(1),
+    .element-form:nth-child(3),
+    .element-form:nth-child(5),
+    .element-form:nth-child(7),
+    .element-form:nth-child(9),
+    .element-form:nth-child(11) {
+        font-weight: bolder;
+        flex-basis: 20%;
+    }
+
+    .element-form:nth-child(2),
+    .element-form:nth-child(4),
+    .element-form:nth-child(6),
+    .element-form:nth-child(8),
+    .element-form:nth-child(10),
+    .element-form:nth-child(12),
+        {
+        font-weight: bolder;
+        flex-basis: 80%;
+    }
+
+    #nom {
+        width: 150%;
+    }
+
+    #adresse {
+        width: 150%;
+    }
+
+    #email {
+        width: 150%;
+    }
+
+    #important {
+        color: red;
+        font-size: 0.8em;
+    }
+
+
 /////////////// END GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-body {
-    width: 90%;
-    margin: auto;
-    border-top: 30px solid green;
-}  
-footer{
-    font-size: 0.9em;
-}
-.element-lignePanier:nth-child(1){
-    order: 1;
-}
-.element-lignePanier:nth-child(2){
-    order: 2;
-}
-.element-lignePanier:nth-child(3){
-    order: 6;
-    flex-basis: 78%
-}
-.element-lignePanier:nth-child(4){
-    order: 3;
-}
-.element-lignePanier:nth-child(5){
-    order: 4;
-}
-.element-lignePanier:nth-child(6){
-    order: 7;
-}
-.element-lignePanier:nth-child(7){
-    order: 5;
-} 
+    body {
+        width: 90%;
+        margin: auto;
+        border-top: 30px solid green;
+    }
 
+    footer {
+        font-size: 0.9em;
+    }
+
+    .element-lignePanier:nth-child(1) {
+        order: 1;
+    }
+
+    .element-lignePanier:nth-child(2) {
+        order: 2;
+    }
+
+    .element-lignePanier:nth-child(3) {
+        order: 6;
+        flex-basis: 78%
+    }
+
+    .element-lignePanier:nth-child(4) {
+        order: 3;
+    }
+
+    .element-lignePanier:nth-child(5) {
+        order: 4;
+    }
+
+    .element-lignePanier:nth-child(6) {
+        order: 7;
+    }
+
+    .element-lignePanier:nth-child(7) {
+        order: 5;
+    }
+    #totauxPanier {
+        font-size: 1em;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-body {
-    border-top: 30px solid blue;
-}
-#idFormContact{
-    width: 80%;
-}
-#totauxPanier {
-    font-size: 1em;
-}
+    body {
+        border-top: 30px solid blue;
+    }
 
+    #idFormContact {
+        width: 80%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-body {
-    border-top: 30px solid orange;
-    width: 70%;
-    margin: auto;
-}
-#idFormContact{
-    width: 70%;
-}
-footer{
-    font-size: 1em;
-}
+    body {
+        border-top: 30px solid orange;
+        width: 70%;
+        margin: auto;
+    }
+
+    #idFormContact {
+        width: 70%;
+    }
+
+    footer {
+        font-size: 1em;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-body {
-    border-top: 30px solid pink;
-    width: 60%;
-    margin: auto;
+    body {
+        border-top: 30px solid pink;
+        width: 70%;
+        margin: auto;
+    }
 }
-} 
-
-
