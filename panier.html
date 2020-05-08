@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
@@ -54,16 +53,15 @@
 
                 // variation quantite - ou supprimer a l'affichage
                 var signeMoinsPanier = "";
+                var plusOuMoins = String("moins");
                 if (ligneProduitLocal.quantite > 1) {
-                    let signe = "plus";
-                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionSetUpPanier(' + ligneProduitLocal.reference + ',' + signe + ')">Qte: -1</button></div>';
-                    //'<a href="gestionPanier.html?actionPanier=modificationMoins&id='+ligneProduitLocal.reference+'">-</a>';
+                    signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionQuantiteMoins('+ x +')">Qte: -1</button></div>';
                 } else {
                     signeMoinsPanier = '<div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionDelete(' + x + ')">Supprimer du panier</button></div>';
                 }
 
                 // creation ligne produit
-                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="' + ligneProduitLocal.urlImage + '" title="' + ligneProduitLocal.reference + '"></div><div class="element-lignePanier">' + ligneProduitLocal.nom + '<br/><br/>Option: <br/>' + ligneProduitLocal.option + '</div><div class="element-lignePanier">' + ligneProduitLocal.description + '</div><div class="element-lignePanier">Prix U:<br/>' + transformPrice(ligneProduitLocal.prixUnitaire) + '</div><div class="element-lignePanier">Qté:<br/>' + ligneProduitLocal.quantite + '</div><div class="element-lignePanier">Prix total:<br/>' + transformPrice(ligneProduitLocal.prixAjour) + '</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id=' + ligneProduitLocal.reference + '">Qte: +1</a></button></div>' + signeMoinsPanier + '</div></div></article>';
+                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="' + ligneProduitLocal.urlImage + '" title="' + ligneProduitLocal.reference + '"></div><div class="element-lignePanier"><div class="element-optionPanier">' + ligneProduitLocal.nom + '</div><div class="element-optionPanier"><b>Option: </b>'+ligneProduitLocal.option+'</div></div><div class="element-lignePanier">' + ligneProduitLocal.description + '</div><div class="element-lignePanier"><b>Prix U:</b><br/>' + transformPrice(ligneProduitLocal.prixUnitaire) + '</div><div class="element-lignePanier"><b>Qté:</b><br/>' + ligneProduitLocal.quantite + '</div><div class="element-lignePanier"><b>Prix total:</b><br/>' + transformPrice(ligneProduitLocal.prixAjour) + '</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite" onclick="fonctionQuantitePlus('+ x +')">Qte: +1</button></div>' + signeMoinsPanier + '</div></div></article>';
 
                 //affichage du panier sur le html
                 document.getElementById("resultatsPanier").innerHTML += ligne;

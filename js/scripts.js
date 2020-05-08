@@ -10,8 +10,7 @@ if (localStorage.getItem("panier") === null) {
 var functionCalculArticlesDuPanier = function () {
     var paniers = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
     var quantite = 0;
-    let x = 0;
-    for (x in paniers) {
+    for (let x in paniers) {
         quantite += parseInt(paniers[x].quantite);
     }
 
@@ -67,13 +66,12 @@ function transformPrice(price) {
     let affichage = partie_euro + "." + partie_centimes;
     return affichage;
 }
-
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////// GESTION DU PANIER /////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////// MESSAGE FLASH UTILISATEUR  //////////////////////////////////////////////////
 var affichageMessageFlash = function () {
@@ -102,16 +100,30 @@ let fonctionDelete = function (a) { // supprimer un produit du panier
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////// MODIFICATION QUANTITE ////////////////////////////////////////////
+//////////////////////////// MODIFICATION QUANTITE PLUS////////////////////////////////////////////
 
-var fonctionActionPanier = function (a, Number) {
+var fonctionQuantitePlus = function(a) {
+    var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
+
+    console.log(data.length)
+    for( let x in data){
+        console.log(data[x])
+    }
+    // Sauvegarde du panier mis à jour
+    //localStorage.setItem("panier", JSON.stringify(data));
+    //window.location.href = "panier.html"; // on revient à la page du panier    
+}
+////////////////////////////////////////// END ///////////////////////////////////////////////
+//////////////////////////// MODIFICATION QUANTITE MOINS////////////////////////////////////////////
+
+var fonctionQuantiteMoins = function(a) {
     var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
     var produitTrouve = false;
     for (let x in data) {
-        if (data[x].reference == a) {
+        if (data[x] == a) {
             produitTrouve = true;
             // Augmenter la quantité et le prix
-            data[x].quantite = data[x].quantite + Number;
+            data[x].quantite--;
             data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
         }
     }
@@ -120,5 +132,4 @@ var fonctionActionPanier = function (a, Number) {
     window.location.href = "panier.html"; // on revient à la page du panier    
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
-
 //////////////////////////////////////////////////////////////// END GESTION DU PANIER /////////////////////////////////////////////////////////////////////
