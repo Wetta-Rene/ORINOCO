@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
@@ -7,17 +6,16 @@
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
     <script src="https://kit.fontawesome.com/440b1b0c24.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <title>ORINOCO - Accueil Catalogue</title>
+    <title>ORINOCO - Confirmation de commande (ou pas)</title>
 </head>
 
 <body>
     <header><img src="images/logoOrinoco.png"></header>
-    <nav id="header">
-        <div id="messagePanier"></div>
-    </nav>
-    <h1 id="baliseH1"></h1>
+    <nav id="header"></nav>
+    <h1>Confirmation (ou pas)</h1>
+    <section id="flashMessage">
+    </section>
     <section id="resultats">
-
     </section>
     <script>
         ////////////////////////////////////////////////////// AFFICHAGE CONTENU DU HEADER ////////////////////////////////////////////////////
@@ -30,7 +28,11 @@
         affichageMessageFlash(); // on affiche un message si besoin
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        document.getElementById("resultats").innerHTML = '<div class="messageConfirmationCommande"><p>Nous remercions pour votre commande !</p><p>Vous pouvez vous faire d\' autres achat en allant voir notre catalogue...</p><p><a href="index.html"><i class="far fa-folder-open"></i></a></p></div>';
+        if (localStorage.confirmCommande !== "KO") {
+            document.getElementById("resultats").innerHTML = '<div class="messageConfirmationCommande"><p>Nous vous remercions pour votre commande n° ' + localStorage.confirmCommande + '</p><p>A bientôt...</p><p><a href="index.html"><i class="far fa-folder-open"></i></a></p></div>';
+        } else {
+            document.getElementById("resultats").innerHTML = '<div class="messageConfirmationCommande"><p>Oupss problème... Désolé !</p><p>Visitez notre catalogue...</p><p><i class="fas fa-arrow-alt-circle-down"></i></p><p><a href="index.html"><i class="far fa-folder-open"></i></a></p></div>';
+        }
     </script>
 
 
