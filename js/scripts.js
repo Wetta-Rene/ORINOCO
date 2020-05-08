@@ -102,7 +102,7 @@ let fonctionDelete = function (a) { // supprimer un produit du panier
 
 //////////////////////////// MODIFICATION QUANTITE PLUS////////////////////////////////////////////
 
-var fonctionQuantitePlus = function(a) {
+var fonctionQuantitePlus = function (a) {
     var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
 
     // Sauvegarde du panier mis à jour
@@ -112,7 +112,7 @@ var fonctionQuantitePlus = function(a) {
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 //////////////////////////// MODIFICATION QUANTITE MOINS////////////////////////////////////////////
 
-var fonctionQuantiteMoins = function(a) {
+var fonctionQuantiteMoins = function (a) {
     var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
     var produitTrouve = false;
     for (let x in data) {
@@ -130,44 +130,10 @@ var fonctionQuantiteMoins = function(a) {
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 //////////////////////////// VIDER LE PANIER PAR BOUTON DU HEADER ////////////////////////////////////////////
 
-var fonctionClearPanier = function(){
+var fonctionClearPanier = function () {
     localStorage.panier = "vide"; // on met la valeur de panier a vide
     localStorage.messagePanier = "Panier vidé !";
     window.location.href = "index.html"; //et on va page accueil
 }
 
 //////////////////////////////////////////////////////////////// END GESTION DU PANIER /////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
