@@ -59,10 +59,13 @@ var fonctionAffichageHeader = function () {
 //////////////////////////////////////////////  END    ////////////////////////////////////////////////////
 
 ///////////////////////////////   AFFICHAGE EN EURO   ///////////////////////////////////////////
-
-
-
-
+function transformPrice(price) {
+    let price_string = price.toString();
+    let partie_euro = price_string.slice(0, price_string.length-2);
+    let partie_centimes = price_string.slice(price_string.length-2, price_string.length);
+    let affichage = partie_euro+"."+partie_centimes;
+    return affichage;
+}
 
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 

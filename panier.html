@@ -67,7 +67,7 @@
                 }
 
                 // creation ligne produit
-                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="' + ligneProduitLocal.urlImage + '" title="' + ligneProduitLocal.reference + '"></div><div class="element-lignePanier">' + ligneProduitLocal.nom + '<br/><br/>Option: <br/>' + ligneProduitLocal.option + '</div><div class="element-lignePanier">' + ligneProduitLocal.description + '</div><div class="element-lignePanier">Prix U:<br/>' + ligneProduitLocal.prixUnitaire + '</div><div class="element-lignePanier">Qté:<br/>' + ligneProduitLocal.quantite + '</div><div class="element-lignePanier">Prix total:<br/>' + ligneProduitLocal.prixAjour + '</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id=' + ligneProduitLocal.reference + '">Qte: +1</a></button></div>' + signeMoinsPanier + '</div></div></article>';
+                let ligne = '<article class="ContenairePanier"><div class="contenaireLignePanier"><div class="element-lignePanier"><img src="' + ligneProduitLocal.urlImage + '" title="' + ligneProduitLocal.reference + '"></div><div class="element-lignePanier">' + ligneProduitLocal.nom + '<br/><br/>Option: <br/>' + ligneProduitLocal.option + '</div><div class="element-lignePanier">' + ligneProduitLocal.description + '</div><div class="element-lignePanier">Prix U:<br/>' + transformPrice(ligneProduitLocal.prixUnitaire) + '</div><div class="element-lignePanier">Qté:<br/>' + ligneProduitLocal.quantite + '</div><div class="element-lignePanier">Prix total:<br/>' + transformPrice(ligneProduitLocal.prixAjour) + '</div><div class="element-lignePanier"><div class="sousElement-lignePanier"><button class="boutonPanierQuantite"><a href="gestionPanier.html?actionPanier=modificationPlus&id=' + ligneProduitLocal.reference + '">Qte: +1</a></button></div>' + signeMoinsPanier + '</div></div></article>';
 
                 //affichage du panier sur le html
                 document.getElementById("resultatsPanier").innerHTML += ligne;
@@ -85,7 +85,7 @@
             document.getElementById("totalArticles").innerHTML = 'Nombre d\'' + plurielArticleBoutonPanier + ': ' + totalDesArticlesDuPanier;
 
             const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
-            document.getElementById("totalPrix").innerHTML = 'Prix total TTC: ' + prixTotalDuPanier;
+            document.getElementById("totalPrix").innerHTML = 'Prix total TTC: ' +transformPrice(prixTotalDuPanier)+' Euro';
             ///////////////////////////////////////////////////// END SOUS PARTIE PANIER /////////////////////////////////////////////////////////////////////////
 
 

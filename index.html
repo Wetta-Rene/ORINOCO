@@ -44,7 +44,7 @@
                     var objet = response[i];
 
 
-                    var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="' + objet.imageUrl + '" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>' + objet.name + '</h2><div class="textDescription">' + objet.description + '</div><div class="divPrix">Prix: ' + objet.price + ' Euro</div><div class="lienPageCustomArticle"><button class="bouton"><a href="produit.html?catalogue=' + catalogue + '&produit=' + objet._id + '">> Personnalisé ce produit</a></button></div></div></div></article>';
+                    var article = '<article class="containerArticle"><div class="elementContainerArticle"><img src="' + objet.imageUrl + '" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>' + objet.name + '</h2><div class="textDescription">' + objet.description + '</div><div class="divPrix">Prix: ' + transformPrice(objet.price) + ' Euro</div><div class="lienPageCustomArticle"><button class="bouton"><a href="produit.html?catalogue=' + catalogue + '&produit=' + objet._id + '">> Personnalisé ce produit</a></button></div></div></div></article>';
 
                     // affichage des differents article
                     Resultats.innerHTML += article;
