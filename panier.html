@@ -18,10 +18,6 @@
     <section id="resultatsPanier">
     </section>
     <section id="totauxPanier">
-        <article>
-            <div id="totalArticles"></div>
-            <div id="totalPrix"></div>
-        </article>
     </section>
     <section id="contactPanier">
     </section>
@@ -82,10 +78,8 @@
             } else {
                 plurielArticleBoutonPanier = "article";
             }
-            document.getElementById("totalArticles").innerHTML = 'Nombre d\'' + plurielArticleBoutonPanier + ': ' + totalDesArticlesDuPanier;
-
             const prixTotalDuPanier = functionCalculPrixTotalDuPanier(); // on fait le calcul total des prix du panier
-            document.getElementById("totalPrix").innerHTML = 'Prix total TTC: ' +transformPrice(prixTotalDuPanier)+' Euro';
+            document.getElementById("totauxPanier").innerHTML = 'Il y a '+totalDesArticlesDuPanier+' '+plurielArticleBoutonPanier+' dans le panier pour un montant de: ' +transformPrice(prixTotalDuPanier)+' Euro';
             ///////////////////////////////////////////////////// END SOUS PARTIE PANIER /////////////////////////////////////////////////////////////////////////
 
 
