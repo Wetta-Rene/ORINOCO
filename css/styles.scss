@@ -268,121 +268,121 @@ footer {
     }
 }
 
-    .boutonPanierQuantite {
-        @include classBouton;
-        height: 4em;
-    }
+.boutonPanierQuantite {
+    @include classBouton;
+    height: 4em;
+}
 
-    #totauxPanier {
-        width: 90%;
-        margin: auto;
-        margin-top: 4%;
-        margin-bottom: 4%;
-        text-align: center;
-        font-weight: bolder;
-        font-size: 0.9em;
-    }
+#totauxPanier {
+    width: 90%;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.9em;
+}
 
-    .messagePanierVide {
-        font-weight: bolder;
-        text-align: center;
-        font-size: 1.2em;
-    }
+.messagePanierVide {
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1.2em;
+}
 
-    .messagePanierVide a {
-        text-decoration: none;
-        color: black;
-        transition: 400ms;
-    }
+.messagePanierVide a {
+    text-decoration: none;
+    color: black;
+    transition: 400ms;
+}
 
-    .messagePanierVide a:hover {
-        color: #B184B5;
-    }
+.messagePanierVide a:hover {
+    color: #B184B5;
+}
 
-    .fas,
-    .far {
-        color: saddlebrown;
-        font-size: 3em;
-        margin-top: 2%;
-        transition-duration: 400ms;
-    }
+.fas,
+.far {
+    color: saddlebrown;
+    font-size: 3em;
+    margin-top: 2%;
+    transition-duration: 400ms;
+}
 
-    .far:hover {
-        color: #B184B5;
-        font-size: 4em;
-        cursor: pointer;
-    }
+.far:hover {
+    color: #B184B5;
+    font-size: 4em;
+    cursor: pointer;
+}
 
-    fieldset {
-        margin-bottom: 20%;
-        border: 2px solid black;
-    }
+fieldset {
+    margin-bottom: 20%;
+    border: 2px solid black;
+}
 
-    legend {
-        font-weight: bolder;
-    }
+legend {
+    font-weight: bolder;
+}
 
-    #idFormContact {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 90%;
-        margin: auto;
-        margin-top: 2%;
-    }
+#idFormContact {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+}
 
-    #idFormContact label {
-        margin-left: 2%;
-    }
+#idFormContact label {
+    margin-left: 2%;
+}
 
-    .element-form {
-        display: flex;
-        margin-bottom: 2%;
-    }
+.element-form {
+    display: flex;
+    margin-bottom: 2%;
+}
 
-    #inputContact {
-        width: 100%;
-        text-align: center;
-        margin-top: 2%;
-    }
+#inputContact {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
 
-    .element-form:nth-child(1),
-    .element-form:nth-child(3),
-    .element-form:nth-child(5),
-    .element-form:nth-child(7),
-    .element-form:nth-child(9),
-    .element-form:nth-child(11) {
-        font-weight: bolder;
-        flex-basis: 20%;
-    }
+.element-form:nth-child(1),
+.element-form:nth-child(3),
+.element-form:nth-child(5),
+.element-form:nth-child(7),
+.element-form:nth-child(9),
+.element-form:nth-child(11) {
+    font-weight: bolder;
+    flex-basis: 20%;
+}
 
-    .element-form:nth-child(2),
-    .element-form:nth-child(4),
-    .element-form:nth-child(6),
-    .element-form:nth-child(8),
-    .element-form:nth-child(10),
-    .element-form:nth-child(12),
-        {
-        font-weight: bolder;
-        flex-basis: 80%;
-    }
+.element-form:nth-child(2),
+.element-form:nth-child(4),
+.element-form:nth-child(6),
+.element-form:nth-child(8),
+.element-form:nth-child(10),
+.element-form:nth-child(12),
+    {
+    font-weight: bolder;
+    flex-basis: 80%;
+}
 
-    #nom {
-        width: 150%;
-    }
+#nom {
+    width: 150%;
+}
 
-    #adresse {
-        width: 150%;
-    }
+#adresse {
+    width: 150%;
+}
 
-    #email {
-        width: 150%;
-    }
+#email {
+    width: 150%;
+}
 
-    #important {
-        color: red;
-        font-size: 0.8em;
-    }
+#important {
+    color: red;
+    font-size: 0.8em;
+}
 
 
 /////////////// END GESTION DU PANIER DE COMMANDE ET CONTACT///////////////////
@@ -427,6 +427,7 @@ footer {
     .element-lignePanier:nth-child(7) {
         order: 5;
     }
+
     #totauxPanier {
         font-size: 1em;
     }

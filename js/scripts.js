@@ -1,5 +1,5 @@
 /////////////////////////////// INITIALISATION D'UN PANIER    //////////////////////////////////////////////
-if (localStorage.getItem("panier") == null) {
+if (localStorage.getItem("panier") === null) {
     localStorage.setItem("panier", "vide");
     localStorage.setItem("messagePanier", "vide");
 }
@@ -10,7 +10,8 @@ if (localStorage.getItem("panier") == null) {
 var functionCalculArticlesDuPanier = function () {
     var paniers = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local 
     var quantite = 0;
-    for (let x in paniers) {
+    let x = 0;
+    for (x in paniers) {
         quantite += parseInt(paniers[x].quantite);
     }
 
@@ -61,9 +62,9 @@ var fonctionAffichageHeader = function () {
 ///////////////////////////////   AFFICHAGE EN EURO   ///////////////////////////////////////////
 function transformPrice(price) {
     let price_string = price.toString();
-    let partie_euro = price_string.slice(0, price_string.length-2);
-    let partie_centimes = price_string.slice(price_string.length-2, price_string.length);
-    let affichage = partie_euro+"."+partie_centimes;
+    let partie_euro = price_string.slice(0, price_string.length - 2);
+    let partie_centimes = price_string.slice(price_string.length - 2, price_string.length);
+    let affichage = partie_euro + "." + partie_centimes;
     return affichage;
 }
 
