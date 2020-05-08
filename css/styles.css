@@ -188,35 +188,35 @@ footer {
   text-align: center;
   order: 2; }
 
-/* line 211, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 212, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-lignePanier:nth-child(3) {
   flex-basis: 75%;
   padding: 1%;
   text-align: justify;
   order: 6; }
 
-/* line 219, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 220, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-lignePanier:nth-child(4) {
   padding: 1%;
   width: 14%;
   text-align: center;
   order: 3; }
 
-/* line 226, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 227, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-lignePanier:nth-child(5) {
   width: 8%;
   text-align: center;
   padding: 1%;
   order: 4; }
 
-/* line 233, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 234, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-lignePanier:nth-child(6) {
   flex-basis: 18%;
   text-align: center;
   padding: 1%;
   order: 5; }
 
-/* line 240, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 241, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-lignePanier:nth-child(7) {
   width: 20%;
   padding: 1%;
@@ -227,21 +227,16 @@ footer {
   justify-content: space-around;
   align-items: center; }
 
-/* line 251, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 252, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .sousElement-lignePanier {
   display: flex; }
 
-/* line 258, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 259, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .decoInputContact :focus :invalid {
   box-shadow: 2px 2px 0 0 red;
   box-shadow: 0 0 2px 2px red; }
 
-/* line 263, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
-.decoInputContact :focus :valid {
-  box-shadow: 2px 2px 0 0 green;
-  box-shadow: 0 0 2px 2px green; }
-
-/* line 270, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 266, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .boutonPanierQuantite {
   border: 2px solid black;
   border-radius: 5px;
@@ -252,7 +247,7 @@ footer {
   .boutonPanierQuantite :hover {
     cursor: pointer; }
 
-/* line 275, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 271, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #totauxPanier {
   width: 90%;
   margin: auto;
@@ -262,23 +257,24 @@ footer {
   font-weight: bolder;
   font-size: 0.9em; }
 
-/* line 285, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
-.messagePanierVide, .messageConfirmationCommande {
+/* line 281, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+.messagePanierVide,
+.messageConfirmationCommande {
   font-weight: bolder;
   text-align: center;
   font-size: 1.2em; }
 
-/* line 291, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 288, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .messagePanierVide a {
   text-decoration: none;
   color: black;
   transition: 400ms; }
 
-/* line 297, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 294, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .messagePanierVide a:hover {
   color: #B184B5; }
 
-/* line 301, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 298, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .fas,
 .far {
   color: saddlebrown;
@@ -286,22 +282,22 @@ footer {
   margin-top: 2%;
   transition-duration: 400ms; }
 
-/* line 309, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 306, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .far:hover {
   color: #B184B5;
   font-size: 4em;
   cursor: pointer; }
 
-/* line 315, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 312, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 fieldset {
   margin-bottom: 20%;
   border: 2px solid black; }
 
-/* line 320, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 317, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 legend {
   font-weight: bolder; }
 
-/* line 324, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 321, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #idFormContact {
   display: flex;
   flex-direction: row;
@@ -310,22 +306,22 @@ legend {
   margin: auto;
   margin-top: 2%; }
 
-/* line 333, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 330, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #idFormContact label {
   margin-left: 2%; }
 
-/* line 337, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 334, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-form {
   display: flex;
   margin-bottom: 2%; }
 
-/* line 342, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 339, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #inputContact {
   width: 100%;
   text-align: center;
   margin-top: 2%; }
 
-/* line 348, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 345, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-form:nth-child(1),
 .element-form:nth-child(3),
 .element-form:nth-child(5),
@@ -335,7 +331,7 @@ legend {
   font-weight: bolder;
   flex-basis: 20%; }
 
-/* line 358, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 355, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 .element-form:nth-child(2),
 .element-form:nth-child(4),
 .element-form:nth-child(6),
@@ -345,68 +341,68 @@ legend {
   font-weight: bolder;
   flex-basis: 80%; }
 
-/* line 369, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 366, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #nom {
   width: 150%; }
 
-/* line 373, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 370, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #adresse {
   width: 150%; }
 
-/* line 377, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 374, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #email {
   width: 150%; }
 
-/* line 381, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+/* line 378, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
 #important {
   color: red;
   font-size: 0.8em; }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  /* line 391, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 388, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   body {
     width: 90%;
     margin: auto;
     border-top: 30px solid green; }
-  /* line 396, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 394, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   footer {
     font-size: 0.7em; }
-  /* line 400, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 398, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(1) {
     order: 1; }
-  /* line 404, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 402, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(2) {
     order: 2; }
-  /* line 408, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 406, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(3) {
     order: 6;
     flex-basis: 78%; }
-  /* line 413, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 411, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(4) {
     order: 3; }
-  /* line 417, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 415, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(5) {
     order: 4; }
-  /* line 421, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 419, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(6) {
     order: 7; }
-  /* line 425, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 423, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   .element-lignePanier:nth-child(7) {
     order: 5; }
-  /* line 429, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 427, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #totauxPanier {
     font-size: 1em; }
-  /* line 432, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 431, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #textFlashMessage {
     width: 22%; } }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  /* line 439, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 438, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   body {
     border-top: 30px solid blue; }
-  /* line 443, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 442, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #idFormContact {
     width: 80%; }
   /* line 446, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
@@ -434,8 +430,8 @@ legend {
     border-top: 30px solid pink;
     width: 70%;
     margin: auto; }
-  /* line 475, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
+  /* line 476, /Users/RENE/DWJ/ORINOCO/css/styles.scss */
   #textFlashMessage {
-    width: 13%; } }
+    width: 14%; } }
 
 /*# sourceMappingURL=styles.css.map */

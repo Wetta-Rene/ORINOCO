@@ -208,6 +208,7 @@ footer {
     text-align: center;
     order: 2;
 }
+
 .element-lignePanier:nth-child(3) {
     flex-basis: 75%;
     padding: 1%;
@@ -259,11 +260,6 @@ footer {
             box-shadow: 2px 2px 0 0 red;
             box-shadow: 0 0 2px 2px red;
         }
-
-        :valid {
-            box-shadow: 2px 2px 0 0 green;
-            box-shadow: 0 0 2px 2px green;
-        }
     }
 }
 
@@ -282,7 +278,8 @@ footer {
     font-size: 0.9em;
 }
 
-.messagePanierVide, .messageConfirmationCommande {
+.messagePanierVide,
+.messageConfirmationCommande {
     font-weight: bolder;
     text-align: center;
     font-size: 1.2em;
@@ -393,6 +390,7 @@ legend {
         margin: auto;
         border-top: 30px solid green;
     }
+
     footer {
         font-size: 0.7em;
     }
@@ -429,9 +427,10 @@ legend {
     #totauxPanier {
         font-size: 1em;
     }
-#textFlashMessage {
-    width: 22%;
-}
+
+    #textFlashMessage {
+        width: 22%;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -443,9 +442,10 @@ legend {
     #idFormContact {
         width: 80%;
     }
-#textFlashMessage {
-    width: 16%;
-}
+
+    #textFlashMessage {
+        width: 16%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -472,7 +472,8 @@ legend {
         width: 70%;
         margin: auto;
     }
+
     #textFlashMessage {
-    width: 13%;
-}
+        width: 14%;
+    }
 }
