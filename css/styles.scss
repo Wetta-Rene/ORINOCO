@@ -67,7 +67,7 @@ button {
 }
 
 
-.containerArticle a{
+.containerArticle a {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -89,7 +89,7 @@ button {
     color: black;
 }
 
-.elementContainerArticle{
+.elementContainerArticle {
     display: flex;
 }
 
@@ -280,6 +280,9 @@ footer {
 .boutonPanierQuantite {
     @include classBouton;
     height: 4em;
+    :hover{
+        cursor: pointer;
+    }
 }
 
 #totauxPanier {
@@ -458,7 +461,7 @@ legend {
     }
 
     #textFlashMessage {
-        width: 16%;
+        width: 20%;
     }
 }
 
@@ -487,7 +490,5 @@ legend {
         margin: auto;
     }
 
-    #textFlashMessage {
-        width: 14%;
-    }
+
 }

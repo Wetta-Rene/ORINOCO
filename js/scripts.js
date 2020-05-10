@@ -72,70 +72,70 @@ function transformPrice(price) {
 ///////////////////////////////   AAJOUTER DANS LE PANIER   ///////////////////////////////////////////
 var fonctionSubmitProduit = function () {
 
-        // on recupere les donnees du formulaire
-        const Id = document.getElementById('id').value; //recupere catalogue
-        const option = document.getElementById('option').value; // recupere produit
-        const quantite = document.getElementById('quantite').value; // recupere produit
-        const catalogue = document.getElementById('catalogue').value; // recupere produit
-        const retourUrl = document.getElementById('urlRetour').value; // recupere produit
-        const name = document.getElementById('name').value; // recupere nom du produit
-        const prixUnitaire = document.getElementById('prix').value; // recupere nom du produit
-        const urlImage = document.getElementById('urlImage').value;// recupere nom du produit
-        const description = document.getElementById('description').value; // recupere nom du produit
-    
-  
+    // on recupere les donnees du formulaire
+    const Id = document.getElementById('id').value; //recupere catalogue
+    const option = document.getElementById('option').value; // recupere produit
+    const quantite = document.getElementById('quantite').value; // recupere produit
+    const catalogue = document.getElementById('catalogue').value; // recupere produit
+    const retourUrl = document.getElementById('urlRetour').value; // recupere produit
+    const name = document.getElementById('name').value; // recupere nom du produit
+    const prixUnitaire = document.getElementById('prix').value; // recupere nom du produit
+    const urlImage = document.getElementById('urlImage').value; // recupere nom du produit
+    const description = document.getElementById('description').value; // recupere nom du produit
 
-            //création d'une class pour creer une ligne plus facilement:
-            class ligneDuPanier {
-                constructor(reference, nom, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description) {
-                    this.reference = Id;
-                    this.nom = nom;
-                    this.quantite = quantite;
-                    this.option = option;
-                    this.prixUnitaire = prixUnitaire;
-                    this.prixAjour = prixAjour;
-                    this.catalogue = catalogue;
-                    this.urlImage = urlImage;
-                    this.description = description
-                }
+
+
+    //création d'une class pour creer une ligne plus facilement:
+    class ligneDuPanier {
+        constructor(reference, nom, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description) {
+            this.reference = Id;
+            this.nom = nom;
+            this.quantite = quantite;
+            this.option = option;
+            this.prixUnitaire = prixUnitaire;
+            this.prixAjour = prixAjour;
+            this.catalogue = catalogue;
+            this.urlImage = urlImage;
+            this.description = description
+        }
+    }
+
+    var prixAjour = prixUnitaire * quantite; // on change le prix si plus que 1 dans le panier
+    //tri du panier
+    if (localStorage.getItem("panier") === "vide") { //si panier d'origine car initialisation à null on ecrit directement dans le panier
+        const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
+        var Panier = [];
+        Panier.push(ligne); // mis dans un tableau pour panier
+        localStorage.messagePanier = "Produit ajouté !";
+        localStorage.setItem("panier", JSON.stringify(Panier));
+        window.location.href = retourUrl; // on revient à la page du produit
+    } else { // c'est pas la première fois
+        // const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue); // nouveau produit a mettre dans panier
+        var data = JSON.parse(localStorage.getItem("panier"));
+
+        var produitTrouve = false;
+        for (let x in data) {
+            if (data[x].reference == Id) {
+
+                produitTrouve = true;
+
+                // Augmenter la quantité et le prix
+                data[x].quantite++;
+                data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
             }
+        }
 
-            var prixAjour = prixUnitaire * quantite; // on change le prix si plus que 1 dans le panier
-            //tri du panier
-            if (localStorage.getItem("panier") === "vide") { //si panier d'origine car initialisation à null on ecrit directement dans le panier
-                const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
-                var Panier = [];
-                Panier.push(ligne); // mis dans un tableau pour panier
-                localStorage.messagePanier = "Produit ajouté !";
-                localStorage.setItem("panier", JSON.stringify(Panier));
-                window.location.href = retourUrl; // on revient à la page du produit
-            } else { // c'est pas la première fois
-                // const ligne = new ligneDuPanier(Id, name, quantite, prixUnitaire, prixAjour, catalogue); // nouveau produit a mettre dans panier
-                var data = JSON.parse(localStorage.getItem("panier"));
+        if (!produitTrouve) {
+            const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
+            data.push(ligne);
+        }
 
-                var produitTrouve = false;
-                for (let x in data) {
-                    if (data[x].reference == Id) {
+        // Sauvegarde du panier mis à jour
+        localStorage.messagePanier = "Produit ajouté !";
+        localStorage.setItem("panier", JSON.stringify(data));
+        window.location.href = retourUrl; // on revient à la page du produit    
 
-                        produitTrouve = true;
-
-                        // Augmenter la quantité et le prix
-                        data[x].quantite++;
-                        data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
-                    }
-                }
-
-                if (!produitTrouve) {
-                    const ligne = new ligneDuPanier(Id, name, quantite, option, prixUnitaire, prixAjour, catalogue, urlImage, description);
-                    data.push(ligne);
-                }
-
-                // Sauvegarde du panier mis à jour
-                localStorage.messagePanier = "Produit ajouté !";
-                localStorage.setItem("panier", JSON.stringify(data));
-                window.location.href = retourUrl; // on revient à la page du produit    
-
-            } //fin du else panier non vide
+    } //fin du else panier non vide
     return false;
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
@@ -176,19 +176,19 @@ let fonctionDelete = function (a) { // supprimer un produit du panier
 var fonctionQuantitePlus = function (reference) {
     var data = JSON.parse(localStorage.getItem("panier")); // on recupere le panier en local
     var produitTrouve = false;
-            for (let x in data) {
-                if (data[x].reference == reference) {
-                    produitTrouve = true;
+    for (let x in data) {
+        if (data[x].reference == reference) {
+            produitTrouve = true;
 
-                    // Augmenter la quantité et le prix
-                    data[x].quantite++;
-                    data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
-                }
-            }
-            localStorage.messagePanier = "Quantité mise à jour !";
-            // Sauvegarde du panier mis à jour
-            localStorage.setItem("panier", JSON.stringify(data));
-            window.location.href = "panier.html";
+            // Augmenter la quantité et le prix
+            data[x].quantite++;
+            data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
+        }
+    }
+    localStorage.messagePanier = "Quantité mise à jour !";
+    // Sauvegarde du panier mis à jour
+    localStorage.setItem("panier", JSON.stringify(data));
+    window.location.href = "panier.html";
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 //////////////////////////// MODIFICATION QUANTITE MOINS////////////////////////////////////////////
@@ -250,7 +250,7 @@ var fonctionSubmitContact = function () {
     // construction de l'utilisateur
     const utilisateur = new formatUtilisateur(prenom, nom, adresse, ville, mail);
 
-    
+
     // construction de l'array avec uniquement les identifiants des produits
     var paniersLocal = JSON.parse(localStorage.getItem("panier")); // on recupere le panier
     var idSacommander = [];
@@ -277,7 +277,7 @@ var fonctionSubmitContact = function () {
     xhttp.open("POST", "http://localhost:3000/api/teddies/order");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(commandeToSend));
-        
+
     return false;
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
