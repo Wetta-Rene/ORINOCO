@@ -26,44 +26,9 @@
         const description = urlParams.get('description') // recupere nom du produit
 
 
-        //detection si tout est bon dans la transmission pas de modif utilisateur...
-        var verifChaineUrlNonVide = "";
-        if (action === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (Id === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (option === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (quantite === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (catalogue === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (retourUrl === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (name === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (prixUnitaire === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (urlImage === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (description === "") {
-            verifChaineUrlNonVide = "1";
-        }
-        if (verifChaineUrlNonVide > 0) {
-            window.location.href = retourUrl;
-        }
+       
 
         //////////////////////////////////// END //////////////////////////////////////////////////////
-
 
         //////////////////////////////////// AUTRE //////////////////////////////////////////////////////   
         if (action == "ajout") {
