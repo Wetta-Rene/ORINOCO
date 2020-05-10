@@ -66,16 +66,30 @@ button {
     flex-basis: 50%;
 }
 
-.containerArticle {
+
+.containerArticle a{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 2%;
     border: 1px solid black;
     background-color: $backgroundColorProduit;
+    text-decoration: none;
+    color: black;
 }
 
-.elementContainerArticle {
+.containerArticlePageProduit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 2%;
+    border: 1px solid black;
+    background-color: $backgroundColorProduit;
+    text-decoration: none;
+    color: black;
+}
+
+.elementContainerArticle{
     display: flex;
 }
 
