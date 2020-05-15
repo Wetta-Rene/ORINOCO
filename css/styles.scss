@@ -25,7 +25,6 @@ body {
     width: 98%;
     margin: auto;
     background-color: $backgroundColorBody;
-    border-top: 30px solid red;
 }
 
 header {
@@ -405,7 +404,6 @@ legend {
     body {
         width: 90%;
         margin: auto;
-        border-top: 30px solid green;
     }
 
     footer {
@@ -452,9 +450,6 @@ legend {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    body {
-        border-top: 30px solid blue;
-    }
 
     #idFormContact {
         width: 80%;
@@ -468,7 +463,6 @@ legend {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     body {
-        border-top: 30px solid orange;
         width: 70%;
         margin: auto;
     }
@@ -485,7 +479,6 @@ legend {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     body {
-        border-top: 30px solid pink;
         width: 70%;
         margin: auto;
     }
