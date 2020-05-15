@@ -1,4 +1,4 @@
-/////////////////////////////// INITIALISATION D'UN PANIER    //////////////////////////////////////////////
+/////////////////////////////// INITIALISATION ARRIVER DU VISITEUR//////////////////////////////////////////////
 if (localStorage.getItem("panier") === null) {
     localStorage.setItem("panier", "vide");
     localStorage.setItem("messagePanier", "vide");
