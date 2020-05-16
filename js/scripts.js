@@ -204,6 +204,7 @@ var fonctionQuantiteMoins = function (reference) {
             data[x].prixAjour = data[x].quantite * data[x].prixUnitaire;
         }
     }
+    localStorage.messagePanier = "Quantité mise à jour !";
     // Sauvegarde du panier mis à jour
     localStorage.setItem("panier", JSON.stringify(data));
     window.location.href = "panier.html"; // on revient à la page du panier    

@@ -55,7 +55,34 @@
                 }
                 ///////////////////// END  /////////////////
 
-                let article = '<article class="containerArticlePageProduit"><div class="elementContainerArticle"><img src="' + response.imageUrl + '" ></div><div class="elementContainerArticle"><div class="contentDescriptionArticle"><h2>' + response.name + '</h2><div class="textDescription">' + response.description + '</div><div class="divPrix">Prix: ' + transformPrice(response.price) + ' Euro</div><div id="selectOptionProduit"><form onsubmit="return fonctionSubmitProduit()" id="FormProduit"><label>Quantité: </label><label><select name="quantite" id="quantite">' + selectOptionsQuantite + '</select></label><label> Option: </label><label><select name="option" id="option">' + selectOptions + '</select></label><input type="hidden" name="id" id="id" value="' + idProduit + '"><input type="hidden" name="urlRetour" id="urlRetour" value="' + urlComplete + '"><input type="hidden" name="name" id="name" value="' + response.name + '"><input type="hidden" name="description" id="description" value="' + response.description + '"><input type="hidden" name="prix" id="prix" value="' + response.price + '"><input type="hidden" name="urlImage" id="urlImage" value="' + response.imageUrl + '"><input type="hidden" name="catalogue" id="catalogue" value="' + catalogue + '"><input type="submit" value="Mettre dans le panier" class="boutonSubmitProduit"/></form></div></div></div></div></article>';
+                let article = 
+                    '<article class="containerArticlePageProduit">'+
+                        '<div class="elementContainerArticle">'+
+                            '<img src="' + response.imageUrl + '" >'+
+                        '</div>'+
+                        '<div class="elementContainerArticle">'+
+                            '<div class="contentDescriptionArticle">'+
+                                '<h2>' + response.name + '</h2>'+
+                                '<div class="textDescription">' + response.description + '</div>'+
+                                '<div class="divPrix">Prix: ' + transformPrice(response.price) + ' Euro</div>'+
+                                '<div id="selectOptionProduit">'+
+                                        '<form onsubmit="return fonctionSubmitProduit()" id="FormProduit">'+
+                                            '<label>Quantité: </label><label><select name="quantite" id="quantite">' + selectOptionsQuantite + '</select></label>'+
+                                            '<label> Option: </label><label><select name="option" id="option">' + selectOptions + '</select></label>'+
+                                            '<input type="hidden" name="id" id="id" value="' + idProduit + '">'+
+                                            '<input type="hidden" name="urlRetour" id="urlRetour" value="' + urlComplete + '">'+
+                                            '<input type="hidden" name="name" id="name" value="' + response.name + '">'+
+                                            '<input type="hidden" name="description" id="description" value="' + response.description + '">'+
+                                            '<input type="hidden" name="prix" id="prix" value="' + response.price + '">'+
+                                            '<input type="hidden" name="urlImage" id="urlImage" value="' + response.imageUrl + '">'+
+                                            '<input type="hidden" name="catalogue" id="catalogue" value="' + catalogue + '">'+
+                                            
+                                            '<input type="submit" value="Mettre dans le panier" class="boutonSubmitProduit"/>'+
+                                        '</form>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</article>';
 
 
                 // affichage des details article
