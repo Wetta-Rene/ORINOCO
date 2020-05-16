@@ -14,42 +14,36 @@
         var catalogue = "teddies"; // ici on peut changer de catalogue cameras, teddies, furniture
 
 
-        /*requette XML vers le backend pour la page index.html */
-        var xhttp;
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var response = JSON.parse(this.responseText);
-
+        // on recupere le contenu du catalogue avec la promise
+        connect("http://localhost:3000/api/"+catalogue)
+            .then(function(response){
+                var objets = JSON.parse(response);
                 var Resultats = document.getElementById("resultats"); //affichage dans id > resultats
 
-                for (var i = 0; i < response.length; i++) {
-                    var objet = response[i];
+                    for (var i = 0; i < objets.length; i++) {
+                        var objet = objets[i];
 
 
-                    var article =
-                    '<article class="containerArticle">'+
-                        '<a href="produit.html?catalogue=' + catalogue + '&produit=' + objet._id + '">'+
-                            '<div class="elementContainerArticle"><img src="' + objet.imageUrl + '" ></div>'+
-                                '<div class="elementContainerArticle">'+
-                                    '<div class="contentDescriptionArticle">'+
-                                        '<h2>' + objet.name + '</h2>'+
-                                        '<div class="textDescription">' + objet.description + '</div>'+
+                        var article =
+                        '<article class="containerArticle">'+
+                            '<a href="produit.html?catalogue=' + catalogue + '&produit=' + objet._id + '">'+
+                                '<div class="elementContainerArticle"><img src="' + objet.imageUrl + '" ></div>'+
+                                    '<div class="elementContainerArticle">'+
+                                        '<div class="contentDescriptionArticle">'+
+                                            '<h2>' + objet.name + '</h2>'+
+                                            '<div class="textDescription">' + objet.description + '</div>'+
+                                        '</div>'+
                                     '</div>'+
-                                '</div>'+
-                        '</a>'+
-                    '</article>';
+                            '</a>'+
+                        '</article>';
 
-                    // affichage des differents article
-                    Resultats.innerHTML += article;
-
-                }
-
-            } //fin du if readyState
-        };
-        xhttp.open("GET", "http://localhost:3000/api/" + catalogue, true);
-        xhttp.send();
-
+                        // affichage des differents article
+                        Resultats.innerHTML += article;
+                    }
+            })
+            .catch(function(error){
+                console.log(error)
+            })
 
         //////////////////// SWITCH TITRE DE LA PAGE EN FONCTION DE LA REQUETTE////////////////
         var contenuH1 = "";
@@ -64,6 +58,5 @@
                 contenuH1 = "LES MEUBLES ANCIENS";
                 break;
         }
-        console.log(contenuH1);
         document.getElementById("baliseH1").innerHTML = contenuH1;
         ////////////////////////////////////////// END ///////////////////////////////////////////
