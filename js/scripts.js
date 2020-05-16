@@ -35,7 +35,7 @@ var functionCalculPrixTotalDuPanier = function () {
 
 
 
-///////////////////////////////   AFFICHAGE DU HEADER DES PAGES DU SITE    //////////////////////////////////////////////
+///////////////////////////////   AFFICHAGE DU MENU HEADER DES PAGES DU SITE    //////////////////////////////////////////////
 var fonctionAffichageHeader = function () {
     let contenuHeader = null;
     if (localStorage.getItem("panier") === "vide") { // panier vide
@@ -58,7 +58,8 @@ var fonctionAffichageHeader = function () {
 
 //////////////////////////////////////////////  END    ////////////////////////////////////////////////////
 
-///////////////////////////////   AFFICHAGE EN EURO   ///////////////////////////////////////////
+
+///////////////////////////////   FONCTION AFFICHAGE EN EURO   ///////////////////////////////////////////
 function transformPrice(price) {
     let price_string = price.toString();
     let partie_euro = price_string.slice(0, price_string.length - 2);
@@ -68,8 +69,19 @@ function transformPrice(price) {
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
 
+//////////////////////////////////////// MESSAGE FLASH UTILISATEUR  //////////////////////////////////////////////////
+var affichageMessageFlash = function () {
+    let message = localStorage.messagePanier;
+    if (message != "vide") {
+        let affichageMessageFlash = '<div id="textFlashMessage">' + message + '</div>';
+        document.getElementById("flashMessage").innerHTML = '<div id="textFlashMessage">' + message + '</div>';
+    }
+    localStorage.messagePanier = "vide"; // on remet vide en cas de rechargement de la page
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////   AAJOUTER DANS LE PANIER   ///////////////////////////////////////////
+
+///////////////////////////////   FONCTION AJOUTER DANS LE PANIER   ///////////////////////////////////////////
 var fonctionSubmitProduit = function () {
 
     // on recupere les donnees du formulaire
@@ -82,8 +94,6 @@ var fonctionSubmitProduit = function () {
     const prixUnitaire = document.getElementById('prix').value; // recupere nom du produit
     const urlImage = document.getElementById('urlImage').value; // recupere nom du produit
     const description = document.getElementById('description').value; // recupere nom du produit
-
-
 
     //création d'une class pour creer une ligne plus facilement:
     class ligneDuPanier {
@@ -144,15 +154,7 @@ var fonctionSubmitProduit = function () {
 //////////////////////////////////////////////////////////////// GESTION DU PANIER /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////// MESSAGE FLASH UTILISATEUR  //////////////////////////////////////////////////
-var affichageMessageFlash = function () {
-    let message = localStorage.messagePanier;
-    if (message != "vide") {
-        let affichageMessageFlash = '<div id="textFlashMessage">' + message + '</div>';
-        document.getElementById("flashMessage").innerHTML = '<div id="textFlashMessage">' + message + '</div>';
-    }
-    localStorage.messagePanier = "vide"; // on remet vide en cas de rechargement de la page
-}
+
 
 //////////////////////////////////////////// SUPPRIMER UN PRODUIT ////////////////////////////////////////////
 let fonctionDelete = function (a) { // supprimer un produit du panier
@@ -191,6 +193,8 @@ var fonctionQuantitePlus = function (reference) {
     window.location.href = "panier.html";
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
+
+
 //////////////////////////// MODIFICATION QUANTITE MOINS////////////////////////////////////////////
 
 var fonctionQuantiteMoins = function (reference) {
@@ -210,6 +214,8 @@ var fonctionQuantiteMoins = function (reference) {
     window.location.href = "panier.html"; // on revient à la page du panier    
 }
 ////////////////////////////////////////// END ///////////////////////////////////////////////
+
+
 //////////////////////////// VIDER LE PANIER PAR BOUTON DU HEADER ////////////////////////////////////////////
 
 var fonctionClearPanier = function () {
@@ -220,6 +226,8 @@ var fonctionClearPanier = function () {
 
 
 ////////////////////////////////////////// END ///////////////////////////////////////////////
+
+
 //////////////////////////// ENVOIE DE LA COMMANDE ////////////////////////////////////////////
 
 var fonctionSubmitContact = function () {
