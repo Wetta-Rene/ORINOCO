@@ -17,7 +17,7 @@
         // on recupere le contenu du catalogue avec la promise
         connect("http://localhost:3000/api/"+catalogue)
             .then(function(response){
-                var objets = JSON.parse(response);
+                var objets = response;// si ok dans la promise
                 var Resultats = document.getElementById("resultats"); //affichage dans id > resultats
 
                     for (var i = 0; i < objets.length; i++) {

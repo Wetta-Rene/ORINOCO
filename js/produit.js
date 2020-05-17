@@ -35,7 +35,7 @@
         // on recupere tout le contenu du catalogue en fonction de l'id avec la promise
         connect("http://localhost:3000/api/"+catalogue+"/"+idProduit)
             .then(function(response){
-                let responces = JSON.parse(response);
+                let responces = response; // resultat si promise OK
             
                 var options = responces[propertyOne]; // propertyOne transmet sa valeur a options
 
